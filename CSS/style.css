@@ -1,0 +1,96 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&family=Lato&family=Montserrat&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --ligth-txt: #fff;
+    --dark-txt: #333;
+    --bg-color: #c59166;
+}
+
+.grid {
+    display: grid;
+    justify-content: center;
+}
+
+li {
+    list-style: none;
+}
+
+/* a {
+    color: var(--ligth-txt);
+    text-decoration: none;
+} */
+
+
+/* Footer Secton */
+footer {
+    background-color: #375aca;
+    color: var(--ligth-txt);
+    height: auto;
+}
+
+footer > h2 {
+    text-align: center;
+}
+
+.main-footer {
+    padding: 10px 15px;
+    /* align-items: center; */
+    grid-template-columns: repeat(4, 1fr);
+    /* height: 20vh; */
+    gap: 20px;
+}
+
+.main-footer p {
+    grid-column: 1/3;
+}
+ 
+.social-icons{
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons i:hover {
+    transform: scale(1.2);
+}
+
+.footer-about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+}
+
+.footer-about span {
+    cursor: pointer;
+}
+
+.nav-footer li {
+    text-decoration: underline;
+    padding: 2px;
+    margin: 10px 0;
+}
+
+.footer-copy {
+    text-align: center;
+}
+
+@media screen and (max-width:858px) {
+    
+    .main-footer{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .social-icons{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
