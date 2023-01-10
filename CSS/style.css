@@ -1,7 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka&family=Lato&family=Montserrat&display=swap');
 
-
 *{
     margin: 0;
     padding: 0;
@@ -28,6 +27,9 @@ a {
     text-decoration: none;
 }
 
+#ok {
+    margin-top: 400px;
+}
 /* Footer Secton */
 footer {
     background-color: #375aca;
@@ -81,7 +83,7 @@ footer > h3 {
     text-align: center;
 }
 
-@media screen (max-width:991px) {
+@media (max-width:991px) {
     /* Header Section */
     .spanFlex {
         display: flex;

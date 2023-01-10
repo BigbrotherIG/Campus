@@ -1,7 +1,7 @@
 <?php include 'header.php'; ?>
 
   <!-- Carousel -->
-    <div class="carousel slide" id="myCarousel" data-bs-ride="carousel">
+    <div class="carousel slide mt-5" id="myCarousel" data-bs-ride="carousel">
             
             <!-- Indicators/dots -->
             <div class="carousel-indicators">
@@ -13,7 +13,7 @@
             <!-- Carousel Inner -->
             <div class="carousel-inner shadow-5-strong">
                 <div class="carousel-item active">
-                    <img src="./Img/paolo-nicolello-umUfeLXPB_I-unsplash.jpg" alt="" class="d-block w-100" style="width:100%; height: 500px;">
+                    <img src="./Img/paolo-nicolello-umUfeLXPB_I-unsplash.jpg" alt="" class="d-block w-100" style="width:100%; height: 600px;">
                     <div class="container">
                         <div class="carousel-caption text-start">
                             <h4>First Slide</h4>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="./Img/group-five-african-college-students-spending-time-together-campus-university-yard-black-afro-friends-studying-education-theme.jpg" alt="" class="d-block w-100" style="width:100%; height: 500px;">
+                    <img src="./Img/group-five-african-college-students-spending-time-together-campus-university-yard-black-afro-friends-studying-education-theme.jpg" alt="" class="d-block w-100" style="width:100%; height: 600px;">
                     <div class="container">
                         <div class="carousel-caption">
                             <h4>Second Slide</h4>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="d-block w-100" style="width:100%; height: 500px;">
+                    <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="d-block w-100" style="width:100%; height: 600px;">
                     <div class="container">
                         <div class="carousel-caption text-end">
                             <h4>Third Slide</h4>
@@ -53,7 +53,7 @@
 
     <!-- Showcase -->
     <section class="container my-5">
-        <div class="p-2 p-md-5 rounded text-bg-dark">
+        <div class="p-2 p-md-5 rounded text-bg-dark animate__animated animate__fadeInDown">
             <div class="col-md-9 px-0">
                 <h2 class="display-6 fst-italic">Stay updated with the lastest news & trends</h2>
                 <p class="lead my-2">concerning Nigerian Univerities with Campus Guide</p>
@@ -62,7 +62,7 @@
         </div>
         
         <div class="row my-4">
-            <div class="col-md-6">
+            <div class="col-md-6 animate__animated animate__fadeInLeft">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-bl#ock mb-2 pb-2 text-primary">World</strong>
@@ -77,7 +77,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 animate__animated animate__fadeInRight">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shawdow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-success">Design</strong>
@@ -162,7 +162,7 @@
                         </div>
                             
                         <div class="col-md">
-                            <div class="flex flex-column pb-3">
+                            <div class="flex flex-column pb-0">
                                 <h5 class="">
                                     <a href="" class="text-danger text-underline-hover">University of Port Harcourt 3rd List</a>
                                 </h5>
@@ -173,17 +173,6 @@
                                 <a href="" class="text-danger">JAMB Registration begins</a>
                                 <hr>
                             </div>
-
-                  
-                            <!-- <div class#="col-sm pb-2">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <class="card-title">Special title treatment</
-                                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                        <a href="#" class="btnpb-2  btn-primary">Go somewhere</a>
-                                    </div>
-                                </div>
-                            </div> -->
 
                         </div>
                     </div>     
@@ -220,7 +209,6 @@
                 </div>
             </div>
         </div>
-
     </section>
 
     <!-- FAQs -->
@@ -261,9 +249,9 @@
     </section>
 
     <!-- Past questions -->
-    <section class="my-3">
-        <div class="container">
-            <h2 class="tezt-dark text-center">Buy and study official past questions</h2>
+    <section class="my-4 mb-3">
+        <div class="container my-4">
+            <h2 class="text-dark text-center">Buy and study official past questions</h2>
             <hr>
             <div class="container row g-3">
                 <div class="col-md-6 col-lg-4">
@@ -307,8 +295,162 @@
         </div>
     </section>
 
-    <!-- Accomodation -->
-    <section class="my-3">
-        
+    <!-- Marketplace -->
+    <!-- <section class="my-5 mt-3">
+        <div class="container my-4">
+            <h2 class="text-center text-dark">Marketplace</h2>
+            <hr>
+            <div class="container row g-3">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="120">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>             
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="120">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>      
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                    <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="120">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>      
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="120">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>             
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                    <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="120">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>      
+                    </div>
+                    <div class="col-md col-lg-4">
+                    <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="120">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>      
+                    </div>
+                </div>
+        </div>
+    </section> -->
+
+    <!-- Questions & Answer Section -->
+    <section class="my-5 mb-5">
+        <div class="container">
+            <h2 class="text-center texr-dark">Ask your Questions</h2>
+            <hr>
+            <div class="row g-3">
+                <div class="col-md">
+                    <div class="container d-flex align-items-center">
+                        <img src="./img/1.png" alt="" class="img-container" width="100">
+                        <div class="ms-2">
+                            <a href="" class="link-primary">When is last list coming out?</a>
+                            <a href="" class="link-danger">Answer</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="container d-flex align-items-center">
+                        <img src="./img/1.png" alt="" class="img-container" width="100">
+                        <div class="ms-2">
+                            <a href="" class="link-primary">When is last list coming out?</a>
+                            <a href="" class="link-danger">Answer</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="container d-flex align-items-center">
+                        <img src="./img/1.png" alt="" class="img-container" width="100">
+                        <div class="ms-2">
+                            <a href="" class="link-primary">When is last list coming out?</a>
+                            <a href="" class="link-danger">Answer</a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+                <div class=" col-md">
+                    <div class="container d-flex align-items-center">
+                        <img src="./img/2.png" alt="" class="img-container" width="100">
+                        <div class="ms-2">
+                            <a href="" class="link-primary">When is last list coming out?</a>
+                            <a href="" class="link-danger">Answer</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="container d-flex align-items-center">
+                        <img src="./img/2.png" alt="" class="img-container" width="100">
+                        <div class="ms-2">
+                            <a href="" class="link-primary">When is last list coming out?</a>
+                            <a href="" class="link-danger">Answer</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="container d-flex align-items-center">
+                        <img src="./img/2.png" alt="" class="img-container" width="100">
+                        <div class="ms-2">
+                            <a href="" class="link-primary">When is last list coming out?</a>
+                            <a href="" class="link-danger">Answer</a>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+            <div class="d-flex py-2 justify-content-start">
+                <a href="" class="btn btn-outline-danger me-2" type="button">All Questions</a>
+                <a href="" class="btn btn-outline-warning" type="button">Ask a question</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="my-5 mb-4 mt-3">
+        <div class="container my-4">
+            <h2 class="text-center text-dark">Upcoming Events</h2>
+            <hr>
+            <div class="container row g-3">
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>             
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                    <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>      
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                    <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>      
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>             
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                    <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>      
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                    <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
+                            <a href="" class="text-primary">JAMB past questions</a>
+                        </div>      
+                    </div>
+            </div>
+        </div>
     </section>
 <?php include "footer.php";?>

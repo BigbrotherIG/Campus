@@ -9,11 +9,12 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="./CSS/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>WebBuilder - Home</title>
 </head>
 
 <body>
-    <header class="bg-dark">
+    <header class="bg-dark fixed-top">
         <!-- <div class="container-md d-flex bg-dark text-light p-3 justify-content-between">
             <a href="" class=" h1 navbar-brand">Campus <span class="navlogo">Guide</span></a>
             <div class="d-flex">
@@ -36,16 +37,16 @@
 
                 <div class="collapse navbar-collapse" id="navMenu">
                     <ul class="nav navbar-nav mx-auto">
-                        <li class="nav-item"><a href="" class="nav-link active">Home</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Lastest Gists</a>
+                        <li class="nav-item"><a href="index.php" class="nav-link active">Home</a></li>
+                        <li class="nav-item"><a href="latest-gists.php" class="nav-link">Latest Gists</a>
                         <!-- <ul class="dropmenu">
                             li.drop
                         </ul> -->
                     </li>
                         <li class="nav-item"><a href="" class="nav-link">Ask Question</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Past Questions</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Events</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Accomodation</a></li>
+                        <li class="nav-item"><a href="past-questions.php" class="nav-link">Past Questions</a></li>
+                        <li class="nav-item"><a href="events.php" class="nav-link">Events</a></li>
+                        <li class="nav-item"><a href="accommodation.php" class="nav-link">Accommodation</a></li>
                     </ul>
 
                     <!-- <div class="d-flex">
