@@ -57,7 +57,7 @@
             <div class="col-md-9 px-0">
                 <h2 class="display-6 fst-italic">Stay updated with the lastest news & trends</h2>
                 <p class="lead my-2">concerning Nigerian Univerities with Campus Guide</p>
-                <p class="lead mb-0"><a href="#" class="text-white.fw-bold">Check lastest news</a></p>
+                <p class="lead mb-0"><a href="#news" class="text-white fw-normal">Check lastest news</a></p>
             </div>
         </div>
         
@@ -111,7 +111,7 @@
     </section> -->
 
     <!-- New Update -->
-    <section class="my-4 py-0">
+    <section class="my-4 py-0" id="news">
         <div class="container">
             <h2 class="display-6 text-start text-danger">New Update</h2>
             <hr class="featurette-divider">
@@ -153,11 +153,6 @@
                                     <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
                                     <hr>
                                 </div>
-                            </div>
-                            
-                            <div class="d-flex py-2 justify-content-start">
-                                <a href="" class="btn btn-outline-danger text-danger-hover me-2" type="button">Read more here</a>
-                                <a href="" class="btn btn-outline-warning text-info-hover" type="button">Subcribe</a>
                             </div>
                         </div>
                             
@@ -207,6 +202,10 @@
                                 <hr>
                             </div>
                 </div>
+            </div>
+            <div class="d-flex py-2 justify-content-start">
+                <a href="" class="btn btn-outline-danger text-danger-hover me-2" type="button">Read more here</a>
+                <a href="" class="btn btn-outline-warning text-info-hover" type="button">Subcribe</a>
             </div>
         </div>
     </section>

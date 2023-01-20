@@ -4,7 +4,7 @@
         <h3>Campus Guide</h3>
 
         <div class="main-footer grid">
-            <p>Ehreek-city for everything and anything concerning electricity we at your services because your comfort is our pleasure.</p>
+            <p>Campus guide for everything and anything concerning electricity we at your services because your comfort is our pleasure.</p>
             
             <div class="footer-contact">
                 <!-- <p>Company</p> -->
@@ -40,7 +40,7 @@
         </div>
 
         <div class="footer-copy">
-            <p>Copyright &copy; 2023 Ehreek. All rights reserved.</p>
+            <p>Copyright &copy; 2023 Campus Guide. All rights reserved.</p>
         </div>
     </footer>
 

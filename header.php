@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./CSS/style.css">
     <link rel="stylesheet" href="./CSS/custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <title>WebBuilder - Home</title>
+    <title>Campus guide - Home</title>
 </head>
 
 <body>
@@ -25,9 +25,9 @@
             </div>
         </div> -->
 
-        <nav class="navbar navbar-expand-lg  py-3 navbar-dark bg-dark">
+        <nav class="container navbar navbar-expand-lg  py-3 navbar-dark bg-dark">
             <div class="container-md container-fluid">
-                <a href="" class="h1 navbar-brand">Campus <span class="navlogo">Guide</span></a>
+                <a href="" class=" navbar-brand">Campus <span class="navlogo">Guide</span></a>
 
                 <button type="button" class="navbar-toggler  spanFlex" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle Navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -42,8 +42,8 @@
                         <!-- <ul class="dropmenu">
                             li.drop
                         </ul> -->
-                    </li>
-                        <li class="nav-item"><a href="" class="nav-link">Ask Question</a></li>
+                        </li>
+                        <li class="nav-item"><a href="ask-a-question.php" class="nav-link">Ask Question</a></li>
                         <li class="nav-item"><a href="past-questions.php" class="nav-link">Past Questions</a></li>
                         <li class="nav-item"><a href="events.php" class="nav-link">Events</a></li>
                         <li class="nav-item"><a href="accommodation.php" class="nav-link">Accommodation</a></li>
