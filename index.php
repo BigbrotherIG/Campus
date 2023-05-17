@@ -1,4 +1,22 @@
 <?php include 'header.php'; ?>
+<?php 
+
+    $sql = "SELECT * FROM `post_data`";
+    $sql_2 = "SELECT * FROM `post_data_2`";
+    $sql_3 = "SELECT * FROM `post_data_3`";
+    $result = mysqli_query($conn, $sql);
+    $result_2 = mysqli_query($conn, $sql_2);
+    $result_3 = mysqli_query($conn, $sql_3);
+    $news = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $news_2 = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
+    $news_3 = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
+    // $news = [
+    //     [
+    //         'news_post' => 'University of Port Harcourt post utme form is out',
+    //         'body' => 'Hello',
+    //     ],
+    // ];
+?>
 
   <!-- Carousel -->
     <div class="carousel slide mt-5" id="myCarousel" data-bs-ride="carousel">
@@ -13,7 +31,7 @@
             <!-- Carousel Inner -->
             <div class="carousel-inner shadow-5-strong">
                 <div class="carousel-item active">
-                    <img src="./Img/paolo-nicolello-umUfeLXPB_I-unsplash.jpg" alt="" class="d-block w-100" style="width:100%; height: 600px;">
+                    <img src="./Img/group-five-african-college-students-spending-time-together-campus-university-yard-black-afro-friends-studying-education-theme.jpg" alt="" class="d-block w-100" style="width:100%; height: 550px;">
                     <div class="container">
                         <div class="carousel-caption text-start">
                             <h4>First Slide</h4>
@@ -22,7 +40,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="./Img/group-five-african-college-students-spending-time-together-campus-university-yard-black-afro-friends-studying-education-theme.jpg" alt="" class="d-block w-100" style="width:100%; height: 600px;">
+                    <img src="./Img/paolo-nicolello-umUfeLXPB_I-unsplash.jpg" alt="" class="d-block w-100" style="width:100%; height: 550px;">
                     <div class="container">
                         <div class="carousel-caption">
                             <h4>Second Slide</h4>
@@ -31,7 +49,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="d-block w-100" style="width:100%; height: 600px;">
+                    <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="d-block w-100" style="width:100%; height: 550px;">
                     <div class="container">
                         <div class="carousel-caption text-end">
                             <h4>Third Slide</h4>
@@ -52,8 +70,8 @@
     </div>
 
     <!-- Showcase -->
-    <section class="container my-5">
-        <div class="p-2 p-md-5 rounded text-bg-dark animate__animated animate__fadeInDown">
+    <section class="container my-5" style="margin-top: 300px;">
+        <div id="section3" class="p-2 p-md-5 rounded text-bg-dark animate__fadeInDown">
             <div class="col-md-9 px-0">
                 <h2 class="display-6 fst-italic">Stay updated with the lastest news & trends</h2>
                 <p class="lead my-2">concerning Nigerian Univerities with Campus Guide</p>
@@ -62,7 +80,7 @@
         </div>
         
         <div class="row my-4">
-            <div class="col-md-6 animate__animated animate__fadeInLeft">
+            <div id="section1" class="col-md-6 animate__animated animate__fadeInLeft">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-bl#ock mb-2 pb-2 text-primary">World</strong>
@@ -77,14 +95,14 @@
                 </div>
             </div>
 
-            <div class="col-md-6 animate__animated animate__fadeInRight">
+            <div id="section2" class="col-md-6 animate__animated animate__fadeInRight">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shawdow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-success">Design</strong>
                         <h3 class="mb-0">Post title</h3>
                         <div class="mb-1 text-muted">Nov 11</div>
                         <p class="card-text mb-auto">This is a wilder card with supportings text below as a natural lead-in to additional content.</p>
-                        <a href="" class="stretched-link text-danger">Continue reading</a>
+                        <a href="" class=" text-danger">Continue reading</a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
                         <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>></svg>
@@ -93,6 +111,7 @@
             </div>
         </div>
     </section>
+    <!-- Showcase -->
 
     <!-- <section class="container my-4 px-4">
         <div class="row">
@@ -114,6 +133,9 @@
     <section class="my-4 py-0" id="news">
         <div class="container">
             <h2 class="display-6 text-start text-danger">New Update</h2>
+            <?php if(empty($news)): ?>
+                <p>There is no news</p>
+            <?php endif; ?>
             <hr class="featurette-divider">
             <div class="row">
                 <div class="col-md-8">
@@ -121,53 +143,81 @@
                     <div class="container row">
                         <div class="col-md">
                             <div class="lastest-news">                          
-                                <div class="heading">
-                                    <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                    <hr>
-                                </div>
-                                <div class="heading">
-                                    <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                    <hr>
-                                </div>
-                                <div class="heading">
-                                    <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                    <hr>
-                                </div>
-                                <div class="heading">
-                                    <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                    <hr>
-                                </div>
-                                <div class="heading">
-                                    <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                    <hr>
-                                </div>
-                                <div class="heading">
-                                    <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                    <hr>
-                                </div>
-                                <div class="heading">
-                                    <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                    <hr>
-                                </div>
-                                <div class="heading">
-                                    <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                    <hr>
-                                </div>
+                                    <?php foreach($news as $post): ?>
+                                        <div class="heading">
+                                            <a href="" class="pb-5 text-primary"><?php echo $post['post_url']; ?></a>
+                                            <hr>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    <!-- <div class="heading">
+                                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                                        <hr>
+                                    </div>
+                                    <div class="heading">
+                                        <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                                        <hr>
+                                    </div>
+                                    <div class="heading">
+                                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                                        <hr>
+                                    </div>
+                                    <div class="heading">
+                                        <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                                        <hr>
+                                    </div>
+                                    <div class="heading">
+                                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                                        <hr>
+                                    </div>
+                                    <div class="heading">
+                                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                                        <hr>
+                                    </div>
+                                    <div class="heading">
+                                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                                        <hr>
+                                    </div> -->
+                                
                             </div>
+                        
                         </div>
                             
                         <div class="col-md">
                             <div class="flex flex-column pb-0">
                                 <h5 class="">
-                                    <a href="" class="text-danger text-underline-hover">University of Port Harcourt 3rd List</a>
+                                    <a href="" class="text-danger text-underline-hover"><?php echo $post['post_url'] ?></a>
                                 </h5>
                                 <img src="./img/group-five-african-college-students-spending-time-together-campus-university-yard-black-afro-friends-studying-education-theme.jpg" alt="" class="w-100 img-container">
                             </div>
+                            
+                            <?php foreach($news_2 as $post): ?>
                             <div class="heading">
                                 <hr>
-                                <a href="" class="text-danger">JAMB Registration begins</a>
+                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
                                 <hr>
                             </div>
+                            <?php endforeach; ?>
+
+                            <!-- <div class="heading">
+                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
+                                <hr>
+                            </div>
+                            <div class="heading">                                
+                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
+                                <hr>
+                            </div>
+                            <div class="heading">                                
+                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
+                                <hr>
+                            </div>
+                            <div class="heading">                                
+                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
+                                <hr>
+                            </div>
+                            <div class="heading">                                
+                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
+                                <hr>
+                            </div> -->
 
                         </div>
                     </div>     
@@ -178,40 +228,44 @@
                     <img src="./img/group-five-african-college-students-spending-time-together-campus-university-yard-black-afro-friends-studying-education-theme.jpg" alt="" class="w-100 img-container">
                     <div class="d-flex">
                         <ul>
-                            <li><a href="" class="text-primary"></a></li>
+                            <li><a href="" class="text-primary">fffffff</a></li>
                         </ul>
                     </div>
+                    <?php  foreach($news_3 as $post): ?>
                     <div class="heading">
-                                <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                <hr>
-                            </div>
-                            <div class="heading">
-                                <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                <hr>
-                            </div>
-                            <div class="heading">
-                                <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                <hr>
-                            </div>
-                            <div class="heading">
-                                <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                <hr>
-                            </div>
-                            <div class="heading">
-                                <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                <hr>
-                            </div>
+                        <a href="" class="pb-2 text-primary"><?php echo $post['post_url']; ?></a>
+                        <hr>
+                    </div>
+                    <?php endforeach; ?>
+                    <div class="heading">
+                        <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                        <hr>
+                    </div>
+                    <div class="heading">
+                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                        <hr>
+                    </div>
+                    <div class="heading">
+                        <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                        <hr>
+                    </div>
+                    <div class="heading">
+                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                        <hr>
+                    </div>
                 </div>
             </div>
             <div class="d-flex py-2 justify-content-start">
-                <a href="" class="btn btn-outline-danger text-danger-hover me-2" type="button">Read more here</a>
-                <a href="" class="btn btn-outline-warning text-info-hover" type="button">Subcribe</a>
+                <a href="latest-gists.php" class="btn btn-outline-danger me-2" type="button">Read more here</a>
+                <a href="" class="btn btn-outline-warning" type="button">Subcribe</a>
             </div>
         </div>
     </section>
+    <!-- New Update -->
+
 
     <!-- FAQs -->
-    <section id="questions" class="my-4">
+    <section id="questions" class="my-4 mb-5">
         <h2 class="text-center text-dark py-3">Frequently Asked Questions</h2>
         <div class="container accordion accordion-flush" id="accordionFlushExample">
             <div class="accordion-item">
@@ -220,6 +274,12 @@
                         Has Uniport release final list/batch?
                     </button>
                 </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                </div>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                </div>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
                 </div>
@@ -246,6 +306,8 @@
             </div>
         </div>
     </section>
+    <!-- FAQs -->
+
 
     <!-- Past questions -->
     <section class="my-4 mb-3">
@@ -290,9 +352,11 @@
                     </div>      
                 </div>
             </div>
-            <p class="lead text-danger my-2 p-3">Didn't what you looking for? click <a href="" class="text-primary">Here</a></p>
+            <p class="lead text-danger my-2 p-3">Didn't see what you looking for? click <a href="past-questions.php" class="text-primary">Here</a></p>
         </div>
     </section>
+    <!-- Past questions -->
+
 
     <!-- Marketplace -->
     <!-- <section class="my-5 mt-3">
@@ -401,11 +465,13 @@
                 </div>
             </div>
             <div class="d-flex py-2 justify-content-start">
-                <a href="" class="btn btn-outline-danger me-2" type="button">All Questions</a>
-                <a href="" class="btn btn-outline-warning" type="button">Ask a question</a>
+                <a href="ask-a-question.php" class="btn btn-outline-danger me-2" type="button">All Questions</a>
+                <a href="ask-a-question.php" class="btn btn-outline-warning" type="button">Ask a question</a>
             </div>
         </div>
     </section>
+    <!-- Questions & Answer Section -->
+
 
     <!-- Upcoming Events -->
     <section class="my-5 mb-4 mt-3">
@@ -416,40 +482,44 @@
                     <div class="col-sm-6 col-lg-4">
                         <div class="d-flex  align-items-center">
                             <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="" class="text-primary">JAMB past questions</a>
+                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
                         </div>             
                     </div>
                     <div class="col-sm-6 col-lg-4">
                     <div class="d-flex  align-items-center">
                             <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="" class="text-primary">JAMB past questions</a>
+                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
                         </div>      
                     </div>
                     <div class="col-sm-6 col-lg-4">
                     <div class="d-flex  align-items-center">
                             <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="" class="text-primary">JAMB past questions</a>
+                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
                         </div>      
                     </div>
                     <div class="col-sm-6 col-lg-4">
                         <div class="d-flex  align-items-center">
                             <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="" class="text-primary">JAMB past questions</a>
+                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
                         </div>             
                     </div>
                     <div class="col-sm-6 col-lg-4">
                     <div class="d-flex  align-items-center">
                             <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="" class="text-primary">JAMB past questions</a>
+                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
                         </div>      
                     </div>
                     <div class="col-sm-6 col-lg-4">
                     <div class="d-flex  align-items-center">
                             <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="" class="text-primary">JAMB past questions</a>
+                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
                         </div>      
                     </div>
             </div>
+            <p class="text-danger my-1 p-3">For more events! Check out the latest and trending events. Click <a href="events.php" class="text-primary">Here</a></p>
+
         </div>
     </section>
+    <!-- Upcoming Events -->
+
 <?php include "footer.php";?>

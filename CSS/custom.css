@@ -1,8 +1,15 @@
 
-.text-underline-hover:hover {
-    text-decoration: underline;
+#section1 {
+    animation-delay: 2s;
+    animation-duration: 1.5s;
 }
 
-#ok {
-    margin-top: 100px;
+#section2 {
+    animation-delay: 2s;
+    animation-duration: 1.5s;
+}
+
+#section3 {
+    animation-delay: .5s;
+    animation-duration: 1s;
 }

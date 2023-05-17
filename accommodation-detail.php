@@ -1,10 +1,26 @@
 <?php include "header.php"; ?>
+<?php 
+    if(isset($_GET['accommodation_id'])){
+        $aId = $_GET['accommodation_id'];
+    }
+
+    $my_sql = "SELECT * FROM `accommodation_data` WHERE accommodation_id = $aId";
+    // $sql = "UPDATE `accommodation_data` SET `accommodation_amenities`";
+    $result = mysqli_query($conn, $my_sql);
+    $accommodation = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    // if ($accommodation) {
+    //     echo $accommodation[''];
+    // }
+?>
     <!-- Space b/w the header and body -->
     <div class="container" style="margin-top: 100px;"></div>
     
     <!-- Houses Details -->
     <div class="container">
         <h2 class="text-start py3">Houses and Accommodation</h2>
+
+        <?php foreach($accommodation as $key): ?>
         <div class="">
             <div class="carousel slide" id="housesImages" data-bs-ride="houseImgs">
                 <div class="carousel-indicators">
@@ -14,13 +30,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="./Img/abiodun-ageh-5EJQ6xVpRKc-unsplash.jpg" alt="" class="img-responsive w-100" height="450">
+                        <img src="<?php echo $key['accommodation_img_1'] ?>" alt="" class="img-responsive w-100" height="450">
                     </div>
                     <div class="carousel-item">
-                        <img src="./Img/desola-lanre-ologun-v6yJuavoADs-unsplash.jpg" alt="" class="img-responsive w-100" height="450">
+                        <img src="<?php echo $key['accommodation_img_2'] ?>" alt="" class="img-responsive w-100" height="450">
                     </div>
                     <div class="carousel-item">
-                        <img src="./Img/cut-in-a-moment-rotRaep7gpY-unsplash.jpg" alt="" class="img-responsive w-100" height="450">
+                        <img src="<?php echo $key['accommodation_img_3'] ?>" alt="" class="img-responsive w-100" height="450">
                     </div>
                 </div>
             </div>
@@ -28,22 +44,24 @@
 
         <div class="row g-3 my-4">
             <div class="col-sm-12 col-md-7">
-                <p class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repudiandae, inventore perferendis dolor molestiae porro. Quis, incidunt doloribus similique possimus accusamus facere neque necessitatibus quibusdam officia? Nisi, rem eum. Soluta ea, odit suscipit quia repudiandae ipsa unde quisquam quo sint beatae neque cupiditate est commodi.</p>
-                <p class="text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti repudiandae, inventore perferendis dolor molestiae porro. Quis, incidunt doloribus similique possimus accusamus facere neque necessitatibus quibusdam officia? Nisi, rem eum. Soluta ea, odit suscipit quia repudiandae ipsa unde quisquam quo sint beatae neque cupiditate est commodi.</p>
+                <p class="text-dark"><?php echo $key['accommodation_det']; ?></p>
             </div>
             <div class="col-sm-12 col-md-3">
                 <h4 class="">Amenities</h4>
+                <li class="px-2"><?php echo $key['accommodation_amenities'] ;?></li>
+                <!-- <li class="px-2">Lorem ipsum dolor sit amet consectetur.</li>
                 <li class="px-2">Lorem ipsum dolor sit amet consectetur.</li>
-                <li class="px-2">Lorem ipsum dolor sit amet consectetur.</li>
-                <li class="px-2">Lorem ipsum dolor sit amet consectetur.</li>
-                <li class="px-2">Lorem ipsum dolor sit amet consectetur.</li>
+                <li class="px-2">Lorem ipsum dolor sit amet consectetur.</li> -->      
             </div>
             <div class="col-sm-12 col-md-2">
                 <h4 class="">Price</h4>
-                <span class="">150,000</span>&nbsp;
+                <span class=""><?php echo $key['accommodation_price'] ?></span>&nbsp;
                 <span class="bg-warning badge badge-warning">New</span>
-                <p class="text-muted fs-6">Posted 7:45 am</p>
+                <p class="text-muted fs-6">Posted: <?php echo $key['date'] ?></p>
             </div>
         </div>
+        <?php endforeach; ?>
+
+        
     </div>
 <?php include "footer.php"; ?>

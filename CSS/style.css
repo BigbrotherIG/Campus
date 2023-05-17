@@ -11,6 +11,7 @@
     --ligth-txt: #fff;
     --dark-txt: #333;
     --bg-color: #c59166;
+    --bg-dark-color: #000000bd;
 }
 
 .grid {
@@ -30,9 +31,15 @@ a {
 #ok {
     margin-top: 400px;
 }
+
+/* Header Section */
+.dropdown-hover {
+    
+}
+
 /* Footer Secton */
 footer {
-    background-color: #375aca;
+    background-color: #000000bd;
     color: var(--ligth-txt);
     height: auto;
 }

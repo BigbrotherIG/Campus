@@ -1,10 +1,15 @@
 
-    const animateScroll = document.querySelector('animate__fadeInDown animate__fadeInLeft animate__fadeInRight')
+    const animateScroll = document.querySelector('#section3')
 
     window.addEventListener("scroll", () => {
-        if(scrollY => 40) {
-            animateScroll.classList.add("animate__fadeInDown animate__fadeInLeft animate__fadeInRight")        
+        console.log(scrollY)
+        // let delayTime = setTimeout(() => animateScroll, 2000);
+        if(scrollY => 250) {
+            animateScroll.classList.add("animate__animated") 
+            setTimeout(() => animateScroll, 2000)
+            animateScroll.id.add("section3")
         }else {
-            animateScroll.classList.remove("animate__fadeInDown animate__fadeInLeft animate__fadeInRight")
+            animateScroll.classList.remove("animate__animated")
         }
     })
+
