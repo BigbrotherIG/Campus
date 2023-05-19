@@ -1,10 +1,20 @@
 <?php include "header.php"; ?>
+
+<?php 
+
+    $events_description = "SELECT * FROM `upcoming_events`";
+    $results = mysqli_query($conn, $events_description);
+    $events = mysqli_fetch_all($results, MYSQLI_ASSOC);
+
+    
+?>
     <!-- Space b/w the header and body -->
     <div class="container" style="margin-top: 100px;"></div>
     
     <!-- Houses Details -->
     <div class="container">
         <h2 class="text-start py3">Events Details</h2>
+        <?php foreach($events as $event): ?>
         <div class="">
             <div class="carousel slide" id="housesImages" data-bs-ride="houseImgs">
                 <div class="carousel-indicators">
@@ -45,5 +55,6 @@
                 <p class="text-muted fs-6">Posted 7:45 am</p>
             </div>
         </div>
+        <?php endforeach; ?>
     </div>
 <?php include "footer.php"; ?>

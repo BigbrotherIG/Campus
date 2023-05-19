@@ -4,12 +4,15 @@
     $sql = "SELECT * FROM `post_data`";
     $sql_2 = "SELECT * FROM `post_data_2`";
     $sql_3 = "SELECT * FROM `post_data_3`";
+    $sql_4 = "SELECT * FROM `upcoming_events`";
     $result = mysqli_query($conn, $sql);
     $result_2 = mysqli_query($conn, $sql_2);
     $result_3 = mysqli_query($conn, $sql_3);
+    $result_4 = mysqli_query($conn, $sql_4);
     $news = mysqli_fetch_all($result, MYSQLI_ASSOC);
     $news_2 = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
     $news_3 = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
+    $events = mysqli_fetch_all($result_4, MYSQLI_ASSOC);
     // $news = [
     //     [
     //         'news_post' => 'University of Port Harcourt post utme form is out',
@@ -66,7 +69,7 @@
                 <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </button>
-                </div>
+            </div>
     </div>
 
     <!-- Showcase -->
@@ -479,6 +482,27 @@
             <h2 class="text-center text-dark">Upcoming Events</h2>
             <hr>
             <div class="container row g-3">
+                <?php foreach($events as $event): ?>
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="d-flex  align-items-center">
+                            <img src="<?php echo $event['event_img']; ?>" alt="" class="img-container me-3" width="100">
+                            <a href="event-details.php" class="text-primary"><?php echo $event['event_url']; ?></a>
+                        </div>             
+                    </div>
+                <?php endforeach; ?>
+
+                    <!-- <div class="col-sm-6 col-lg-4">
+                    <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
+                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
+                        </div>      
+                    </div>
+                    <div class="col-sm-6 col-lg-4">
+                    <div class="d-flex  align-items-center">
+                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
+                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
+                        </div>      
+                    </div>
                     <div class="col-sm-6 col-lg-4">
                         <div class="d-flex  align-items-center">
                             <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
@@ -496,25 +520,7 @@
                             <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
                             <a href="event-details.php" class="text-primary">JAMB past questions</a>
                         </div>      
-                    </div>
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="d-flex  align-items-center">
-                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
-                        </div>             
-                    </div>
-                    <div class="col-sm-6 col-lg-4">
-                    <div class="d-flex  align-items-center">
-                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
-                        </div>      
-                    </div>
-                    <div class="col-sm-6 col-lg-4">
-                    <div class="d-flex  align-items-center">
-                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
-                        </div>      
-                    </div>
+                    </div> -->
             </div>
             <p class="text-danger my-1 p-3">For more events! Check out the latest and trending events. Click <a href="events.php" class="text-primary">Here</a></p>
 
