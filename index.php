@@ -1,24 +1,20 @@
-<?php include 'header.php'; ?>
-<?php 
+<?php include 'header.php';
 
-    $sql = "SELECT * FROM `post_data`";
-    $sql_2 = "SELECT * FROM `post_data_2`";
-    $sql_3 = "SELECT * FROM `post_data_3`";
-    $sql_4 = "SELECT * FROM `upcoming_events`";
+    $sql = "SELECT * FROM `post_data` WHERE trends = 'latest_trends'";
+    $sql_2 = "SELECT * FROM `post_data` WHERE trends = 'latest_news'";
+    $sql_3 = "SELECT * FROM `post_data` WHERE trends = 'trends'";
+    $sql_4 = "SELECT * FROM `upcoming_events` WHERE event_status = 'upcoming'";
+    $faq = "SELECT * FROM `campus_guide_faq`";
     $result = mysqli_query($conn, $sql);
     $result_2 = mysqli_query($conn, $sql_2);
     $result_3 = mysqli_query($conn, $sql_3);
     $result_4 = mysqli_query($conn, $sql_4);
+    $faq_result = mysqli_query($conn, $faq);
     $news = mysqli_fetch_all($result, MYSQLI_ASSOC);
     $news_2 = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
     $news_3 = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
     $events = mysqli_fetch_all($result_4, MYSQLI_ASSOC);
-    // $news = [
-    //     [
-    //         'news_post' => 'University of Port Harcourt post utme form is out',
-    //         'body' => 'Hello',
-    //     ],
-    // ];
+    $get_faq = mysqli_fetch_all($faq_result, MYSQLI_ASSOC);
 ?>
 
   <!-- Carousel -->
@@ -103,7 +99,7 @@
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-block mb-2 text-success">Design</strong>
                         <h3 class="mb-0">Post title</h3>
-                        <div class="mb-1 text-muted">Nov 11</div>
+                        <div class="mb-1 text-muted"><?php echo date('F jS'); ?></div>
                         <p class="card-text mb-auto">This is a wilder card with supportings text below as a natural lead-in to additional content.</p>
                         <a href="" class=" text-danger">Continue reading</a>
                     </div>
@@ -115,22 +111,6 @@
         </div>
     </section>
     <!-- Showcase -->
-
-    <!-- <section class="container my-4 px-4">
-        <div class="row">
-            <div class="col-md-5">
-                <div class="container">
-                    <img src="./Img/2.png" class="image-fluid w-100 rounded-2 mx-auto" width="400" height="400" alt="">
-                </div>
-            </div>
-            
-            <div class="col-md-7">
-                <div class="container">
-                    <h2 class="display-5 lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, consequatur!</h2>
-                </div>
-            </div>
-        </div>
-    </section> -->
 
     <!-- New Update -->
     <section class="my-4 py-0" id="news">
@@ -145,44 +125,14 @@
                     <p class="col-md-8 display-6 fw-auto text-danger">Lastest News</p>
                     <div class="container row">
                         <div class="col-md">
-                            <div class="lastest-news">                          
-                                    <?php foreach($news as $post): ?>
-                                        <div class="heading">
-                                            <a href="" class="pb-5 text-primary"><?php echo $post['post_url']; ?></a>
-                                            <hr>
-                                        </div>
-                                    <?php endforeach; ?>
-                                    <!-- <div class="heading">
-                                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
+                            <div class="lastest-news">                        
+                                <?php foreach($news as $post): ?>
+                                    <div class="heading">
+                                        <a href="news.php?post_id=<?php echo $post['post_id']; ?>" class="pb-5 text-primary"><?php echo $post['post_url']; ?></a>
                                         <hr>
                                     </div>
-                                    <div class="heading">
-                                        <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                        <hr>
-                                    </div>
-                                    <div class="heading">
-                                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                        <hr>
-                                    </div>
-                                    <div class="heading">
-                                        <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                        <hr>
-                                    </div>
-                                    <div class="heading">
-                                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                        <hr>
-                                    </div>
-                                    <div class="heading">
-                                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                        <hr>
-                                    </div>
-                                    <div class="heading">
-                                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                                        <hr>
-                                    </div> -->
-                                
-                            </div>
-                        
+                                <?php endforeach; ?>
+                            </div>                      
                         </div>
                             
                         <div class="col-md">
@@ -192,36 +142,17 @@
                                 </h5>
                                 <img src="./img/group-five-african-college-students-spending-time-together-campus-university-yard-black-afro-friends-studying-education-theme.jpg" alt="" class="w-100 img-container">
                             </div>
-                            
+                            <div class="d-flex">
+                                <ul>
+                                    <li><a href="" class="text-primary"></a></li>
+                                </ul>
+                            </div>
                             <?php foreach($news_2 as $post): ?>
-                            <div class="heading">
-                                <hr>
-                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
-                                <hr>
-                            </div>
+                                <div class="heading">
+                                    <a href="news.php?post_id=<?= $post['post_id'];?>" class="text-danger"><?php echo $post['post_url']; ?></a>
+                                    <hr>
+                                </div>
                             <?php endforeach; ?>
-
-                            <!-- <div class="heading">
-                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
-                                <hr>
-                            </div>
-                            <div class="heading">                                
-                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
-                                <hr>
-                            </div>
-                            <div class="heading">                                
-                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
-                                <hr>
-                            </div>
-                            <div class="heading">                                
-                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
-                                <hr>
-                            </div>
-                            <div class="heading">                                
-                                <a href="" class="text-danger"><?php echo $post['post_url']; ?></a>
-                                <hr>
-                            </div> -->
-
                         </div>
                     </div>     
                 </div>
@@ -231,31 +162,15 @@
                     <img src="./img/group-five-african-college-students-spending-time-together-campus-university-yard-black-afro-friends-studying-education-theme.jpg" alt="" class="w-100 img-container">
                     <div class="d-flex">
                         <ul>
-                            <li><a href="" class="text-primary">fffffff</a></li>
+                            <li><a href="" class="text-primary"></a></li>
                         </ul>
                     </div>
                     <?php  foreach($news_3 as $post): ?>
-                    <div class="heading">
-                        <a href="" class="pb-2 text-primary"><?php echo $post['post_url']; ?></a>
-                        <hr>
-                    </div>
+                        <div class="heading">
+                            <a href="news.php?post_id=<?= $post['post_id']; ?>" class="pb-2 text-primary"><?php echo $post['post_url']; ?></a>
+                            <hr>
+                        </div>
                     <?php endforeach; ?>
-                    <div class="heading">
-                        <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                        <hr>
-                    </div>
-                    <div class="heading">
-                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                        <hr>
-                    </div>
-                    <div class="heading">
-                        <a href="" class="pb-5 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                        <hr>
-                    </div>
-                    <div class="heading">
-                        <a href="" class="pb-2 text-primary">University of Africa, Toru-Orua asks fresh students to resume January 9th</a>
-                        <hr>
-                    </div>
                 </div>
             </div>
             <div class="d-flex py-2 justify-content-start">
@@ -266,47 +181,22 @@
     </section>
     <!-- New Update -->
 
-
     <!-- FAQs -->
     <section id="questions" class="my-4 mb-5">
         <h2 class="text-center text-dark py-3">Frequently Asked Questions</h2>
-        <div class="container accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Has Uniport release final list/batch?
+
+        <div class="container accordion accordion-flush" >
+            <?php foreach($get_faq as $faq_ans): ?>
+                <div class="accordion-item">
+                    
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne">
+                        <?php echo $faq_ans['faq_title']; ?>
                     </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" >
+                        <div class="accordion-body"><?php echo $faq_ans['faq_ans']; ?></div>
+                    </div>
                 </div>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                </div>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                    Can I supplement if my score is low?
-                </button>
-                </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                    How much for Uniport school fees?
-                </button>
-                </h2>
-                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                </div>
-            </div>
+            <?php endforeach; ?>    
         </div>
     </section>
     <!-- FAQs -->
@@ -485,42 +375,12 @@
                 <?php foreach($events as $event): ?>
                     <div class="col-sm-6 col-lg-4">
                         <div class="d-flex  align-items-center">
-                            <img src="<?php echo $event['event_img']; ?>" alt="" class="img-container me-3" width="100">
-                            <a href="event-details.php" class="text-primary"><?php echo $event['event_url']; ?></a>
-                        </div>             
+                            <img src="<?php echo $event['event_img']; ?>" alt="" class="img-container me-3" width="80"  height="80">
+                            <a href="event-details.php?events_id=<?php echo $event['events_id']; ?>" class="text-primary"><?php echo $event['event_url']; ?></a>
+                        </div>   
                     </div>
                 <?php endforeach; ?>
 
-                    <!-- <div class="col-sm-6 col-lg-4">
-                    <div class="d-flex  align-items-center">
-                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
-                        </div>      
-                    </div>
-                    <div class="col-sm-6 col-lg-4">
-                    <div class="d-flex  align-items-center">
-                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
-                        </div>      
-                    </div>
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="d-flex  align-items-center">
-                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
-                        </div>             
-                    </div>
-                    <div class="col-sm-6 col-lg-4">
-                    <div class="d-flex  align-items-center">
-                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
-                        </div>      
-                    </div>
-                    <div class="col-sm-6 col-lg-4">
-                    <div class="d-flex  align-items-center">
-                            <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                            <a href="event-details.php" class="text-primary">JAMB past questions</a>
-                        </div>      
-                    </div> -->
             </div>
             <p class="text-danger my-1 p-3">For more events! Check out the latest and trending events. Click <a href="events.php" class="text-primary">Here</a></p>
 

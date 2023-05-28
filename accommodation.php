@@ -4,21 +4,14 @@
     $my_sql = "SELECT * FROM `accommodation_data`";
     $result = mysqli_query($conn, $my_sql);
     $accommodation = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    // $accommodation = [
-    //     [
-    //         'accommodation_id' => '1',
-    //         'accommodation_image' => 'gfd',
-    //         'accommodation_det' => 'asdfghhjj',
-    //         'date' => 'asdfghhjj',
-    //     ],
-    //  ]
+
 ?>
     <!-- Accomodation showcase -->
     <section class="my-4 mt-5" >
         <div class="container py-3" style="margin-top:100px">
             <h2 class="text-start">Campus Guide - Accommodation</h2>
             <?php if(empty($accommodation)): ?>
-                <p class="lead">There is no feedback</p>
+                <p class="lead">No House available; come back later..</p>
             <?php endif; ?>
 
             <div class="container py-3 row g-3">
@@ -40,54 +33,6 @@
                     </div>
                     
                     <?php endforeach; ?>
-
-                    <!-- <div class="container d-flex flex-column justify-content-center my-3">
-                        <div class="container">
-                            <img src="./Img/desola-lanre-ologun-v6yJuavoADs-unsplash.jpg" alt="" class="img-responsive img-fluid">
-                        </div>
-                        <div class="container text-dark">
-                            <li><a href="accommodation-detail.php" class="h5 text-underline-hover link-primary">House for rent at alakahia Lorem ipsum dolor sit amet.</a></li>
-                            <span class="">150,000</span>&nbsp;
-                            <span class="bg-warning badge badge-warning">New</span>
-                            <p class="text-muted fs-6">Posted 7:45 am</p>
-                        </div>
-                    </div>
-
-                    <div class="container d-flex flex-column justify-content-center my-3">
-                        <div class="container">
-                            <img src="./Img/desola-lanre-ologun-v6yJuavoADs-unsplash.jpg" alt="" class="img-responsive img-fluid">
-                        </div>
-                        <div class="container text-dark">
-                            <li><a href="accommodation-detail.php" class="h5 text-underline-hover link-primary">House for rent at alakahia Lorem ipsum dolor sit amet.</a></li>
-                            <span class="">150,000</span>&nbsp;
-                            <span class="bg-warning badge badge-warning">New</span>
-                            <p class="text-muted fs-6">Posted 7:45 am</p>
-                        </div>
-                    </div>
-
-                    <div class="container d-flex flex-column justify-content-center my-3">
-                        <div class="container">
-                            <img src="./Img/desola-lanre-ologun-v6yJuavoADs-unsplash.jpg" alt="" class="img-responsive img-fluid">
-                        </div>
-                        <div class="container text-dark">
-                            <li><a href="accommodation-detail.php" class="h5 text-underline-hover link-primary">House for rent at alakahia Lorem ipsum dolor sit amet.</a></li>
-                            <span class="">150,000</span>&nbsp;
-                            <span class="bg-warning badge badge-warning">New</span>
-                            <p class="text-muted fs-6">Posted 7:45 am</p>
-                        </div>
-                    </div>
-
-                    <div class="container d-flex flex-column justify-content-center my-3">
-                        <div class="container">
-                            <img src="./img/group-five-african-college-students-spending-time-together-campus-university-yard-black-afro-friends-studying-education-theme.jpg" alt="" class="img-responsive img-fluid">
-                        </div>
-                        <div class="container text-dark">
-                            <li><a href="accommodation-detail.php" class="h5 text-underline-hover link-primary">House for rent at alakahia Lorem ipsum dolor sit amet.</a></li>
-                            <span class="">150,000</span>&nbsp;
-                            <span class="bg-warning badge badge-warning">New</span>
-                            <p class="text-muted fs-6">Posted 7:45 am</p>
-                        </div>
-                    </div> -->
                  
                 </div>
                 

@@ -12,6 +12,7 @@
     --dark-txt: #333;
     --bg-color: #c59166;
     --bg-dark-color: #000000bd;
+    --lg-grey: #d8c5c5;
 }
 
 .grid {
@@ -30,6 +31,10 @@ a {
 
 #ok {
     margin-top: 400px;
+}
+
+.comment-section {
+    background-color: var(--lg-grey);
 }
 
 /* Header Section */

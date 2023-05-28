@@ -13,7 +13,7 @@
                     <!-- Uniport past questions -->
                     <div class="container accordion accordion-flush" id="facultyPastQuestion">
                         <div class="accordion-item">
-                            <p class="h4 accordion-header" id="flush-headingOne">
+                            <p class="h4 accordion-header" >
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne">
                                     Faculty of Agriculture
                                 </button>
@@ -30,7 +30,7 @@
                         </div>
 
                         <div class="accordion-item">
-                            <p class="h4 accordion-header" id="flush-headingTwo">
+                            <p class="h4 accordion-header" >
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo">
                                     Faculty of Education
                                 </button>
@@ -166,54 +166,6 @@
                         </div>
                     </div>
 
-                    <!-- <div class="container dropmenu">
-                        <li class="dropdown-toggle" data-bs-toggle="dropdown" style="cursor:pointer;">Faculty of Agriculture</li>
-                        <div class="dropdown-menu">
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                        <div class="accordion-item">
-                            <p class="h4 accordion-header" id="flush-headingSix">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix">
-                                    Faculty of Science
-                                </button>
-                            </p>
-                            <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#facultyPastQuestion">
-                                <p class="accordion-body">English</p>
-                            </div>
-                            <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#facultyPastQuestion">
-                                <p class="accordion-body">Fine Art</p>
-                            </div>
-                            <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#facultyPastQuestion">
-                                <p class="accordion-body">Mucis</p>
-                            </div>
-                        </div>
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                        </div>
-                    </div>
-                    <div class="container dropmenu">
-                        <li class="dropdown-toggle" data-bs-toggle="dropdown" style="cursor:pointer;">Faculty of Education</li>
-                        <div class="dropdown-menu">
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                        </div>
-                    </div>
-                    <div class="container dropmenu">
-                        <li class="dropdown-toggle" data-bs-toggle="dropdown" style="cursor:pointer;">Faculty of Engineering</li>
-                        <div class="dropdown-menu">
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                        </div>
-                    </div>
-                    <div class="container dropmenu">
-                        <li class="dropdown-toggle" data-bs-toggle="dropdown" style="cursor:pointer;">Faculty of Humanities</li>
-                        <div class="dropdown-menu">
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                            <li><a href="" class="dropdown-item">Ayc</a></li>
-                        </div>
-                    </div> -->
                 </div>
 
                 <!--  -->
