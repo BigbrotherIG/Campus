@@ -9,42 +9,43 @@
     $get_news = mysqli_fetch_all($eachnews, MYSQLI_ASSOC);
 
 
-    $name = $body = '';
+    $name = $comments = '';
     $nameErr = $bodyErr = '';
-    if(isset($_POST['comment'])){
 
+
+    if(isset($_POST['comment'])){
+        
         if(empty($_POST['name'])) {
-            $nameErr = '<span class="">Name is required</span>';
-            echo "
-                // <script>
-                //     setTimeOut(() => {
-                //         alert('Clear fields')
-                //     }, 100)
-                // </script>
-                <script>
-                    // let name = getElementById('name').innerHtml += '<p>jbghj</p>';
-                    
-                    // alert('md5($nameErr)');
-                </script>
-            ";
+            $nameErr = "Name is required";
         }else {
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         }
 
-        if(empty($_POST['body'])) {
-            $bodyErr = 'Comment is required';
+        if(empty($_POST['comments'])) {
+            $bodyErr = "Comment is required";
         }else {
-            $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $comments = filter_input(INPUT_POST, 'comments', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         }
 
-        if(!empty($name) && !empty($body)) {
+
+        if(!empty($nameErr) && !empty($bodyErr)) {
             // Echo error
             echo "Error";
         } else {
-            // $my_news = "UPDATE ``"
-        }
-    }
+                      
+            $queryInsert = $conn->query("INSERT INTO `post_comments` ( `post_id`, `name`, `comment`, `date`)
+                VALUES ('$new', '$name', '$comments', current_timestamp())");
+            
+            if(!empty($queryInsert)){
+                $query = $conn->query("SELECT * FROM `post_comments`");
+                echo '$query';
+                // while($query )
+            }
 
+     
+        }
+
+    }
     
 ?>
 
@@ -54,11 +55,11 @@
     <section class="my-4">
         <div class="container">
             <?php foreach($get_news as $newsId):?>
-            <h2 class="my-4 text-primary"><?php echo $newsId['post_url']?></h2>
-            <div class="container row g-3">
+                <h2 class="my-4 text-primary"><?php echo $newsId['post_url']?></h2>
+                <div class="container row g-3">
                 
                 <!-- News blog -->
-                <div class="col-md-8 col-xs-6 border p-2 me-5">
+                <div class="col-md-8 col-xs-6 border p-2 me-3">
                     <!-- Date posted and author -->
                     <p class="container">
                         <small>Posted by:</small>
@@ -85,18 +86,17 @@
                     </div>
 
                     <!-- See comments -->
-                    <div class="comment-section container my-3" style="background-color: var(--lg-grey)">
-                        <p class="text-primary"><?= $name;?></p>
-                        <p class="text-primary"><?= $body;?></p>
-                        <p class="text-primary" id="name"></p>
+                    <div class="container comment-section my-3" style="background-color: var(--lg-grey);">
+                        <p class="mx-3 my-0 text-primary"><?= $name;?></p>
+                        <p class="mx-3 my-2 text-primary"><?= $comments;?></p>
                     </div>
 
                     <!-- Comments -->
                     <div class="container mt-3">
-                        <form action="news.php?<?php echo $_SERVER['PHP_SELF']?>" class="form container" method="POST">
+                        <form action="" class="form container" method="POST">
                             <p class="m-0">Post your comment</p>
                             <div>
-                                <label class="form-label is-invalid" for="name">Name:</label>
+                                <label class="form-label <?= $nameErr ? 'is-invalid' : null;?>" for="name">Name:</label>
                                 <input type="text" name="name" id="name" class="form-control">
                                 <div class="invalid-feedback">
                                     <?= $nameErr; ?>
@@ -104,8 +104,8 @@
                             </div>
                             
                             <div class="">                           
-                                <label class="form-label " for="body">Comment: </label>
-                                <textarea name="body" id="body" class="form-control is-invalid"></textarea>
+                                <label class="form-label " for="comments">Comment: </label>
+                                <textarea name="comments" id="comments" class="form-control <?= $bodyErr[''] ?? "is-invalid";?>"></textarea>
                                 <div class="invalid-feedback">
                                     <?= $bodyErr; ?>
                                 </div>
@@ -114,6 +114,7 @@
                             <input type="submit" name="comment" value="Send" class="send btn btn-primary mt-3">
                         </form>
                     </div>
+
                     <div class="container my-4">
                         <div class="bg-info text-white">
                             <p class="lead fw-normal text-center">Be the first to know</p> 
@@ -124,9 +125,9 @@
                         </div>
                     </div>
                 </div>
-                <?php endforeach; ?>
 
-            
+            <?php endforeach; ?>
+        
                 <!-- Advertisement -->
                 <div class="col-md-3 col-xs-3 border h-100">
                     <p>Place your advert.</p>
@@ -140,4 +141,4 @@
     </section>
 
 
-<?php include 'footer.php' ?>
+<?php include 'footer.php'; ?>

@@ -16,7 +16,7 @@
     <!--  -->
     <section class="my-4">
         <div class="container">
-            <h2 class="my-4">JAMB News</h2>
+        <h2 class="my-4">JAMB News</h2>
             <div class="container row g-3">
                 <div class="col-md-8 col-xs-6 border p-2 me-5">
                     <?php foreach($get_jamb as $jamb):?>
