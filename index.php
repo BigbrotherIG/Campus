@@ -1,10 +1,10 @@
 <?php include 'header.php';
 
-    $sql = "SELECT * FROM `post_data` WHERE trends = 'latest_trends'";
-    $sql_2 = "SELECT * FROM `post_data` WHERE trends = 'latest_news'";
-    $sql_3 = "SELECT * FROM `post_data` WHERE trends = 'trends'";
-    $sql_4 = "SELECT * FROM `upcoming_events` WHERE event_status = 'upcoming'";
-    $faq = "SELECT * FROM `campus_guide_faq`";
+    $sql = "SELECT * FROM `post_data` WHERE trends = 'latest_trends' LIMIT 10";
+    $sql_2 = "SELECT * FROM `post_data` WHERE trends = 'latest_news' LIMIT 5";
+    $sql_3 = "SELECT * FROM `post_data` WHERE trends = 'trends' LIMIT 8";
+    $sql_4 = "SELECT * FROM `upcoming_events` WHERE event_status = 'upcoming' LIMIT 9";
+    $faq = "SELECT * FROM `campus_guide_faq` LIMIT 5";
     $result = mysqli_query($conn, $sql);
     $result_2 = mysqli_query($conn, $sql_2);
     $result_3 = mysqli_query($conn, $sql_3);
@@ -79,35 +79,45 @@
         </div>
         
         <div class="row my-4">
+            <?php 
+                $querySelect = $conn->query("SELECT * FROM `post_data` WHERE trends = 'new' LIMIT 1");
+                while($featurePost = mysqli_fetch_array($querySelect)) {  
+            ?>
             <div id="section1" class="col-md-6 animate__animated animate__fadeInLeft">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
                         <strong class="d-inline-bl#ock mb-2 pb-2 text-primary">World</strong>
-                        <h3 class="mb-0">Featured post</h3>
+                        <h3 class="mb-0 fs-6"><?=$featurePost['post_url']?></h3>
                         <div class="mb-1 text-muted">Nov 12</div>
                         <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="stretched-link text-danger">Continue reading</a>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                    </div>
-                </div>
-            </div>
-
-            <div id="section2" class="col-md-6 animate__animated animate__fadeInRight">
-                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shawdow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-success">Design</strong>
-                        <h3 class="mb-0">Post title</h3>
-                        <div class="mb-1 text-muted"><?php echo date('F jS'); ?></div>
-                        <p class="card-text mb-auto">This is a wilder card with supportings text below as a natural lead-in to additional content.</p>
-                        <a href="" class=" text-danger">Continue reading</a>
+                        <a href="news.php?post_id=<?=$featurePost['post_id']?>" class="stretched-link text-danger">Continue reading</a>
                     </div>
                     <div class="col-auto d-none d-lg-block">
                         <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>></svg>
                     </div>
                 </div>
             </div>
+            <?php };?>
+
+            <?php 
+                $querySelect = $conn->query("SELECT * FROM `post_data` WHERE trends = 'trends' LIMIT 1");
+                while($featurePost = mysqli_fetch_array($querySelect)) {  
+            ?>
+            <div id="section2" class="col-md-6 animate__animated animate__fadeInRight">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shawdow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success">New</strong>
+                        <h3 class="mb-0 fs-6"><?=$featurePost['post_url']?></h3>
+                        <div class="mb-1 text-muted"><?php echo date('F jS'); ?></div>
+                        <p class="card-text mb-auto">This is a wilder card with supportings text below as a natural lead-in to additional content.</p>
+                        <a href="news.php?post_id=<?=$featurePost['post_id']?>" class="stretched-link text-danger">Continue reading</a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>></svg>
+                    </div>
+                </div>
+            </div>
+            <?php } ;?>
         </div>
     </section>
     <!-- Showcase -->
@@ -189,10 +199,10 @@
             <?php foreach($get_faq as $faq_ans): ?>
                 <div class="accordion-item">
                     
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne<?=$faq_ans['faq_id']?>">
                         <?php echo $faq_ans['faq_title']; ?>
                     </button>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" >
+                    <div id="flush-collapseOne<?=$faq_ans['faq_id']?>" class="accordion-collapse collapse">
                         <div class="accordion-body"><?php echo $faq_ans['faq_ans']; ?></div>
                     </div>
                 </div>
@@ -217,33 +227,16 @@
                 <div class="col-md-6 col-lg-4">
                 <div class="d-flex  align-items-center">
                         <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                        <a href="" class="text-primary">JAMB past questions</a>
+                        <a href="" class="text-primary">Uniport past questions</a>
                     </div>      
                 </div>
                 <div class="col-md-6 col-lg-4">
                 <div class="d-flex  align-items-center">
                         <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                        <a href="" class="text-primary">JAMB past questions</a>
+                        <a href="" class="text-primary">Rivers state past questions</a>
                     </div>      
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="d-flex  align-items-center">
-                        <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                        <a href="" class="text-primary">JAMB past questions</a>
-                    </div>             
-                </div>
-                <div class="col-md-6 col-lg-4">
-                <div class="d-flex  align-items-center">
-                        <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                        <a href="" class="text-primary">JAMB past questions</a>
-                    </div>      
-                </div>
-                <div class="col-md col-lg-4">
-                <div class="d-flex  align-items-center">
-                        <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" alt="" class="img-container me-3" width="100">
-                        <a href="" class="text-primary">JAMB past questions</a>
-                    </div>      
-                </div>
+            
             </div>
             <p class="lead text-danger my-2 p-3">Didn't see what you looking for? click <a href="past-questions.php" class="text-primary">Here</a></p>
         </div>
@@ -312,41 +305,8 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="container d-flex align-items-center">
-                        <img src="./img/1.png" alt="" class="img-container" width="100">
-                        <div class="ms-2">
-                            <a href="" class="link-primary">When is last list coming out?</a>
-                            <a href="" class="link-danger">Answer</a>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="container d-flex align-items-center">
-                        <img src="./img/1.png" alt="" class="img-container" width="100">
-                        <div class="ms-2">
-                            <a href="" class="link-primary">When is last list coming out?</a>
-                            <a href="" class="link-danger">Answer</a>
-                        </div>
-                    </div>
-                    <hr>
                 </div>
-
                 <div class=" col-md">
-                    <div class="container d-flex align-items-center">
-                        <img src="./img/2.png" alt="" class="img-container" width="100">
-                        <div class="ms-2">
-                            <a href="" class="link-primary">When is last list coming out?</a>
-                            <a href="" class="link-danger">Answer</a>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="container d-flex align-items-center">
-                        <img src="./img/2.png" alt="" class="img-container" width="100">
-                        <div class="ms-2">
-                            <a href="" class="link-primary">When is last list coming out?</a>
-                            <a href="" class="link-danger">Answer</a>
-                        </div>
-                    </div>
-                    <hr>
                     <div class="container d-flex align-items-center">
                         <img src="./img/2.png" alt="" class="img-container" width="100">
                         <div class="ms-2">

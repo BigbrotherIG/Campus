@@ -1,22 +1,36 @@
 <?php include 'header.php';
 
-    $jambNews = "SELECT * FROM `post_data` WHERE trends = 'latest_trends' LIMIT 10";
+    $limit = 10;
+
+    if(isset($_GET['page'])) {
+        $page = $_GET['page'];
+    }else {
+        $page = 1;
+    }
+
+    $start = $limit * ($page - 1);
+    $next = $page + 1;
+    $prev = $page - 1;
+    
+    $jambNews = "SELECT * FROM `post_data` WHERE trends = 'latest_trends' LIMIT $limit OFFSET $start";
     $connJamb = mysqli_query($conn, $jambNews);
     $get_jamb = mysqli_fetch_all($connJamb, MYSQLI_ASSOC);
 
-    // $getQuery -> query("SELECT FROM `post_data` WHERE  news_detail ='news_detail' LIMIT 20");
+    $jambALL = $conn->query("SELECT * FROM `post_data` WHERE trends = 'latest_trends'");
+    $countAll = $jambALL->num_rows;
 
-    if($getQuery){
+    $pages = ceil($countAll/$limit);
 
-    }
 ?>
 
     <div class="container" style="margin-top:100px"></div>
 
     <!--  -->
     <section class="my-4">
+        
         <div class="container">
-        <h2 class="my-4">JAMB News</h2>
+            <h2 class="my-3">JAMB News</h2>
+            <h2 class="my-3"><?=$countAll?></h2>
             <div class="container row g-3">
                 <div class="col-md-8 col-xs-6 border p-2 me-5">
                     <?php foreach($get_jamb as $jamb):?>
@@ -24,19 +38,18 @@
                             <a href="news.php?post_id=<?php echo $jamb['post_id']; ?>" class="lead fs-4 fw-normal text-primary"><?php echo $jamb['post_url']?></a>
                             <p></p>
                             <div class=" d-flex flex-column mb-3">
-                                <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" class="img-responsive mx-auto" width="70%" height="300">
+                                <img src="<?=$jamb['news_img']?>" class="img-responsive mx-auto" width="70%" height="300">
                                 <div class="ms-md-3 mt-2 mb-2">
                                     <small>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident aliquid voluptate ipsa ullam facilis voluptates assumenda esse aperiam adipisci magni? Quibusdam modi voluptas, soluta temporibus illo, quod alias eaque sequi minus quo cum eveniet assumenda?
-                                        <p><?= $jamb['news_detail'];?></p>
+                                        <p><?=substr($jamb['news_detail'], 0, 255)?>
                                         <a href="news.php?post_id=<?= $jamb['post_id'];?>" class="text-primary">Read more</a>
                                         </p>
                                     </small>
-                                    <small class="">
-                                       
-                                        <!-- <small> <?= $jamb [date('jS F')] ?> |</small> -->
-                                        <small> <?= $jamb ['news_date']?> |</small>
-                                        <small> comment</small>
+                                    <small>
+                                        <small>Posted by:</small>
+                                        <small class="text-danger"> <?=$jamb['news_author']?></small>
+                                        <small>| <?=$jamb['news_date']?></small><br>
+                                        <small>Comment:</small>
                                     </small>
                                     <hr>
                                 </div>    
@@ -66,8 +79,21 @@
             </div>
 
             <div class="container mx-auto d-flex ">
-                <a href="" class="btn btn-outline-danger me-1">Prev</a>
-                <a href="jamb.php?" class="btn btn-outline-primary">Next</a>
+            
+                <a href="jamb.php?page=<?=$prev?>" class="btn btn-outline-danger <?php if($page <= 1){?>disabled<?php }?> me-1">Prev</a>
+                
+                <?php 
+                    if($pages <= 10) {
+                        for($counter = 1; $counter <= $pages; $counter++) {
+                            if($counter === $page) {
+                ?>
+                    <a href="jamb.php" class="btn btn-outline-secondary me-1"><?=$counter ?></a>
+                <?php } else { ?>
+                    <a href="jamb.php?page=<?= $counter?>" class="btn btn-outline-secondary me-1"><?=$counter?></a>
+                <?php } } }?>
+
+                <a href="jamb.php?page=<?=$next?>"  class="btn btn-outline-primary <?php if($page >= $pages){?>disabled<?php } ?>">Next</a>
+            
             </div>
         </div>
 

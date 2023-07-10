@@ -27,8 +27,8 @@
                         <img src="<?php echo $event['event_img']; ?>" height="255.33" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Description</h5>
-                            <p class="card-text"><?php echo $event['event_des']; ?></p>
-                            <a href="event-details.php?events_id=<?php echo $event['events_id']; ?>" class="btn btn-danger"><?php echo $event['event_url']; ?></a>
+                            <p class="card-text"><?php echo $event['event_url']; ?></p>
+                            <a href="event-details.php?events_id=<?php echo $event['events_id']; ?>" class="btn btn-danger">Preview</a>
                             <a href="#" class="btn btn-primary">Set schedule</a>
                         </div>
                     </div>

@@ -21,12 +21,12 @@
 
                     <div class="container d-flex flex-column justify-content-center my-3">
                         <div class="container" name="accommodation_image">
-                            <img src="<?php echo $item['accommodation_image']; ?>" alt=""  class="w-100 img-responsive" style="max-width: 100%; max-height: 450px">
+                            <img src="./<?php echo $item['accommodation_image']; ?>" alt=""  class="w-100 img-responsive" style="max-width: 100%; max-height: 450px">
                         </div>
                         <div class="container text-dark" name="accommodation_det">                           
 
                             <li><a href="accommodation-detail.php?accommodation_id=<?php echo $item['accommodation_id']; ?>" class="h5 h6-xs link-primary"><?php echo $item['accommodation_url']; ?></a></li>
-                            <span class=""><?php echo $item['accommodation_price']; ?></span>&nbsp;
+                            <span class="">₦<?php echo $item['accommodation_price']; ?></span>&nbsp;
                             <span class="bg-warning badge badge-warning">New</span>
                             <p class="text-muted fs-6">Posted <?php echo $item['date']; ?></p>
                         </div>

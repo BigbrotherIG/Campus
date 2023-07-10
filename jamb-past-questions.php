@@ -6,7 +6,7 @@
             <h2 class="my-4">Get Jamb Past Questions</h2>
             <div class="container row">
                 <div class="col-md-8 col-xs-6 border border-dark  p-2">
-                    <p class="lead fs-6 fw-normal">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas recusandae pariatur ad molestias quos nisi provident architecto ex sint veritatis.</p>
+                    <p class="lead fs-6 fw-normal">Get your uniport past questions as PDF at as low as ₦1000.</p>
                     <p class="h5 container text-decoration-underline">Faculty</p>
                     <p></p>
 

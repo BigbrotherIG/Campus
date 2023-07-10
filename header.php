@@ -1,4 +1,6 @@
-<?php include 'includes/dbconnect.php' ?>
+<?php session_start(); 
+include 'includes/dbconnect.php'
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +34,7 @@
 
         <nav class="container navbar navbar-expand-lg  py-3 navbar-dark bg-dark">
             <div class="container-md container-fluid">
-                <a href="index.php" class="navbar-brand">Campus <span class="navlogo">Guide</span></a>
+                <a href="index.php" class="navbar-brand fs-5">Campus <span class="navlogo fs-5">Guide</span></a>
 
                 <button type="button" class="navbar-toggler  spanFlex" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Toggle Navigation">
                     <span class="navbar-toggler-icon"></span>

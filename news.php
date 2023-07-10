@@ -14,7 +14,7 @@
 
 
     if(isset($_POST['comment'])){
-        
+
         if(empty($_POST['name'])) {
             $nameErr = "Name is required";
         }else {
@@ -63,27 +63,23 @@
                     <!-- Date posted and author -->
                     <p class="container">
                         <small>Posted by:</small>
-                        <small class="text-primary"><?php echo $newsId['news_author']; ?></small><br>
-                        <small> <?= $newsId['news_date']?> |</small>
-                        <small> comment</small>
+                        <small class="text-danger"><?php echo $newsId['news_author']; ?></small>
+                        <small>| Comment</small><br>
+                        <small>Date: <?= $newsId['news_date']?></small>
                     </p>
                     <!-- News details -->
-                    <p class="container lead fs-6 fw-normal text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum earum est natus dolorem alias nulla maiores, praesentium quasi accusamus dolorum.</p>
+
+                    <div class="container">
+                        <div class="container"><?=$newsId['news_detail']?></div>
+                    </div>
+                    <!-- <p class="container lead fs-6 fw-normal text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum earum est natus dolorem alias nulla maiores, praesentium quasi accusamus dolorum.</p>
                     <div class="container d-flex flex-column mb-4">
                         <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" class="mx-auto img-responsive align-" width="80%" height="300">
                         <div class="ms-md-3 mt-2">
                             <p class="mb-0 text-primary"><?php echo $newsId['news_author']; ?></p>
                         </div>
                         
-                    </div>
-
-                    <div class="container d-flex flex-column mt-3">
-                        <img src="./Img/baim-hanif-pYWuOMhtc6k-unsplash.jpg" class="mx-auto img-responsive" width="80%" height="300">
-                        <div class="ms-md-3 ">
-                            
-                        </div>
-                        
-                    </div>
+                    </div> -->
 
                     <!-- See comments -->
                     <div class="container comment-section my-3" style="background-color: var(--lg-grey);">

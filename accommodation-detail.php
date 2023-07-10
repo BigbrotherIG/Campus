@@ -1,5 +1,4 @@
-<?php include "header.php"; ?>
-<?php 
+<?php include "header.php"; 
     if(isset($_GET['accommodation_id'])){
         $aId = $_GET['accommodation_id'];
     }
@@ -31,13 +30,13 @@
 
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="<?php echo $key['accommodation_img_1'] ?>" alt="" class="img-responsive w-100" height="450">
+                            <img src="<?=$key['accommodation_img_1']?>" alt="house-image-1" class="img-responsive w-100" height="450">
                         </div>
                         <div class="carousel-item">
-                            <img src="<?php echo $key['accommodation_img_2'] ?>" alt="" class="img-responsive w-100" height="450">
+                            <img src="<?php echo $key['accommodation_img_2'] ?>" alt="house-image-2" class="img-responsive w-100" height="450">
                         </div>
                         <div class="carousel-item">
-                            <img src="<?php echo $key['accommodation_img_3'] ?>" alt="" class="img-responsive w-100" height="450">
+                            <img src="<?php echo $key['accommodation_img_3'] ?>" alt="house-image-3" class="img-responsive w-100" height="450">
                         </div>
 
                         <!-- <button class="carousel-control-prev" type="button" data-bs-target="#housesImages" data-bs-slide="prev">
@@ -48,7 +47,6 @@
                             <span class="carousel-control-next-icon"></span>
                         </button> -->
                     </div>
-                
                 </div>
             </div>
 
@@ -58,14 +56,11 @@
                 </div>
                 <div class="col-sm-12 col-md-3">
                     <h4 class="">Amenities</h4>
-                    <li class="px-2"><?php echo $key['accommodation_amenities'] ;?></li>
-                    <!-- <li class="px-2">Lorem ipsum dolor sit amet consectetur.</li>
-                    <li class="px-2">Lorem ipsum dolor sit amet consectetur.</li>
-                    <li class="px-2">Lorem ipsum dolor sit amet consectetur.</li> -->      
+                    <li class="px-2"><?php echo $key['accommodation_amenities'] ;?></li>   
                 </div>
                 <div class="col-sm-12 col-md-2">
                     <h4 class="">Price</h4>
-                    <span class=""><?php echo $key['accommodation_price'] ?></span>&nbsp;
+                    <span class="">₦<?php echo $key['accommodation_price'] ?></span>&nbsp;
                     <span class="bg-warning badge badge-warning">New</span>
                     <p class="text-muted fs-6">Posted: <?php echo $key['date'] ?></p>
                 </div>

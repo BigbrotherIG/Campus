@@ -35,12 +35,9 @@ a {
 
 .comment-section {
     background-color: var(--lg-grey);
+    margin: 0 1.5rem;
 }
 
-/* Header Section */
-.dropdown-hover {
-    
-}
 
 /* Footer Secton */
 footer {

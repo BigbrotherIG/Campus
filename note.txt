@@ -1,0 +1,16 @@
+
+      //   if(isset($_SESSION)) {
+                            $accountId = $_SESSION['account_id'];
+                            //   }
+                            
+                          // $accountId = $_GET['account_id'];
+                          $queryUpdate = $conn->query
+                          // ("INSERT INTO `admins`  (`activity`, `page`, `log_time`) VALUES ('$_SERVER[SCRIPT_NAME]', 'now()', 'current_timestamp()'");
+                          ("UPDATE `admins` SET activity = '$_SERVER[SCRIPT_NAME]',  log_time = 'now()' WHERE `admins`.`account_id` = $accountId");
+                          
+                          $queryInsert = $conn->query("SELECT * FROM `admins` WHERE `account_id` = $accountId");
+                            $rowCount = mysqli_num_rows($queryInsert);
+                            while($detail = mysqli_fetch_array($queryInsert)) {
+                            // $activty = $_SERVER['SCRIPT_NAME'];
+                            $activty = $detail['activity'];
+                            $login = time();  }    
