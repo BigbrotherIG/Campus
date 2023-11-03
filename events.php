@@ -1,12 +1,12 @@
-<?php include "header.php"; ?>
-
-<?php 
+<?php include "header.php";
 
     $events_description = "SELECT * FROM `upcoming_events` WHERE event_status = 'more_events'";
     $results = mysqli_query($conn, $events_description);
     $events = mysqli_fetch_all($results, MYSQLI_ASSOC);
 
 ?>
+
+    <title>Campus guide - Events</title>
 
     <!-- Space b/w the header and body -->
     <div class="container" style="margin-top: 100px;"></div>
@@ -24,7 +24,8 @@
                 <?php foreach($events as $event): ?>
                 <div class="col-12 col-lg-4">
                     <div class="card my-2 w-100">
-                        <img src="<?php echo $event['event_img']; ?>" height="255.33" class="card-img-top" alt="...">
+                        <!-- <img src="<?=$event['event_img']; ?>" height="255.33" class="card-img-top" alt="Image of the event"> -->
+                        <img src="<?=$event['event_img']?>" height="255.33" class="card-img-top" alt="<?=$event['event_img']?>">
                         <div class="card-body">
                             <h5 class="card-title">Description</h5>
                             <p class="card-text"><?php echo $event['event_url']; ?></p>

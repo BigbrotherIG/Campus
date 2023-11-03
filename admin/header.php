@@ -2,13 +2,13 @@
   session_start();
   include_once('../includes/dbconnect.php');
   if(!isset($_SESSION['account_id'])){
-      echo"
-      <script>window.location.href='login.php'</script>
-    ";
+      header("location:login.php");
   }else {
     $account_id = $_SESSION['account_id'];
-    $query = $conn->query("SELECT * FROM `admins` WHERE `account_id` = '$account_id'");
-    while($row = mysqli_fetch_array($query)) {
+    //$query = $conn->query("SELECT * FROM `admins` WHERE `account_id` = '$account_id'");
+    $query = "SELECT * FROM admins WHERE account_id = '".$account_id."'";
+    $result = mysqli_query($conn, $query);
+    while($row = mysqli_fetch_assoc($result)) {
       $admin_username = $row['username'];
       $admin_email = $row['email'];
       $admin_image = $row['user_img'];
@@ -120,7 +120,12 @@
           <!-- Admin Profile -->
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="../<?=$admin_image?>" alt="profile"/>
+              <?php
+                echo '
+                  <img src="Campus\imgUpload\\'.$admin_image.'" alt="Profile">
+                ';
+              ?>
+              <!--<img src="imgUpload/'..'" alt="profile"/>-->
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item" href="profile.php">

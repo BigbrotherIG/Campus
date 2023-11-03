@@ -22,7 +22,8 @@
     $pages = ceil($countAll/$limit);
 ?>
 
-<div class="container" style="margin-top:100px"></div>
+    <title>Campus guide - University Gists</title>
+    <div class="container" style="margin-top:100px"></div>
 
     <!--  -->
     <section class="my-4">
@@ -40,7 +41,7 @@
                                     <img src="<?=$uniGists['news_img']?>" class="img-responsive mx-auto" width="70%" height="300" alt="news-image">
                                     <div class="ms-md-3 mt-2 mb-2">
                                         <small>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident aliquid voluptate ipsa ullam facilis voluptates assumenda esse aperiam adipisci magni? Quibusdam modi voluptas, soluta temporibus illo, quod alias eaque sequi minus quo cum eveniet assumenda?
+                                            <p><?=substr($uniGists['news_detail'], 0, 255)?>
                                             <a href="news.php?post_id=<?=$uniGists['post_id'];?>" class="text-primary">Read more</a>
                                             </p>
                                         </small>
@@ -92,7 +93,6 @@
                     <a href="university-gists.php?page=<?=$next?>" class="btn btn-outline-primary <?php if($page >= $pages){?>disabled <?php } ?>">Next</a>
                 </div>
         </div>
-
 
     </section>
 

@@ -22,6 +22,8 @@
     $pages = ceil($countAll/$limit);
 
 ?>
+    
+    <title>Campus guide - JAMB News</title>
 
     <div class="container" style="margin-top:100px"></div>
 

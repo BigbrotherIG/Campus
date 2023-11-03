@@ -23,9 +23,11 @@
 
 ?>
 
-<div class="container" style="margin-top:100px"></div>
+    <title>Campus guide - Post Utme</title>
+    <!-- Space -->
+    <div class="container" style="margin-top:100px"></div>
 
-<!--  -->
+    <!--  -->
     <section class="my-4">
     
         <div class="container">
@@ -41,7 +43,7 @@
                                     <img src="<?=$utme['news_img']?>" class="img-responsive mx-auto" width="70%" height="300">
                                     <div class="ms-md-3 mt-2 mb-2">
                                         <small>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident aliquid voluptate ipsa ullam facilis voluptates assumenda esse aperiam adipisci magni? Quibusdam modi voluptas, soluta temporibus illo, quod alias eaque sequi minus quo cum eveniet assumenda?
+                                            <p><?=$utme['news_detail']?>
                                             <a href="news.php?post_id=<?=$utme['post_id'];?>" class="text-primary">Read more</a>
                                             </p>
                                         </small>

@@ -9,6 +9,8 @@
     $events = mysqli_fetch_all($results, MYSQLI_ASSOC);
   
 ?>
+
+    <title>Campus guide - Event Detail</title>
     <!-- Space b/w the header and body -->
     <div class="container" style="margin-top: 100px;"></div>
     
@@ -29,7 +31,7 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="./<?=$eventDetail['event_img_1']?>" alt="" class="img-responsive w-100" height="450">
+                            <img src="<?=$eventDetail['event_img_1']?>" alt="" class="img-responsive w-100" height="450">
                         </div>
                         <div class="carousel-item">
                             <img src="<?=$eventDetail['event_img_2']?>" alt="" class="img-responsive w-100" height="450">

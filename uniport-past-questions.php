@@ -1,10 +1,12 @@
 <?php include "header.php"; 
 
+    $error_message = "";
     if(isset($_POST['submit'])) {
 
         $faculties_select = $_POST['faculties_select'];
         $department_id = $_POST['department_id'];
         $email = $_POST['username'];
+       
 
         $queryInsert = $conn->query("SELECT * FROM `faculties` WHERE faculty_id = $faculties_select");
         foreach($queryInsert as $faculties){
@@ -16,12 +18,13 @@
             $department_name = $departm['department_name'];
         }
 
-
-        $_SESSION['sweetalertText'] = array("title" => "Confirm! This cost ₦1000" , "text" => "$email", "icon" => "error", "button" => "Confirm!");
+        $_SESSION['sweetalertText'] = array("title" => "Confirm! This cost ₦1000" , "text" => "$email", "icon" => "warning", "button" => "Confirm!");
     
     }
 
 ?>
+    <title>Campus guide - Past Questions</title>
+
     <div class="container" style="margin-top: 100px;"></div>
     <!--  -->
     <section class="my-4">
@@ -29,7 +32,7 @@
             <h2 class="my-4">Get Uniport Past Questions</h2>
             <div class="container row g-4">
                 <div class="col-md-8 col-xs-6 border border-dark border-start p-2 me-5 py-4">
-                    <p class=" container lead fs-6 fw-normal">Get your uniport past questions as PDF at as low as &#8358;1000.</p>
+                    <p class=" container lead fs-6 fw-normal">Get your uniport past questions as PDF for &#8358;1500.</p>
                     <p></p>
 
                     <!-- Uniport past questions -->
@@ -56,7 +59,6 @@
                                         <option selected value=""></option>  
                                     </select>
                                     <label for="floatingSelect">Select department</label>
-
                             </div>
 
                             <div class="form-floating mb-3">
@@ -69,15 +71,17 @@
                      
                         <dl class="row mb-0">
                             <dt class="col-12">Client Name</dt>
-                            <?php if(empty($faculty_name) && empty($department_name)):?>
-                            <p class="lead">Fill the fields above</p>
-                            <?php endif; ?>
-                      
-                            <dd class="col-12"><?=$faculty_name?>
-                        
-                            </dd>
+                           <?php
+                            if(!empty($faculty_name) && !empty($department_name) && !empty($email)) {
+                           ?>
+                            <dd class="col-12"><?=$faculty_name?></dd>
                             <dd class="col-12"><?=$department_name?></dd>
                             <dd class="col-12"><?=$email?></dd>
+                            <?php } else { ?>
+                                <dd class="col-12">Your faculty Name</dd>
+                                <dd class="col-12">Your department Name</dd>
+                                <dd class="col-12">Your email</dd>
+                            <?php }?>
                         </dl>
                                          
                     </div>

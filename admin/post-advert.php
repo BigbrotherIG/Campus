@@ -31,6 +31,11 @@
             $queryInsert = $conn->query("INSERT INTO `post_data` (`post_url`, `trends`, `news_author`, `news_detail`, `news_date`)
             VALUES ('$post_url', '', '$author', '', current_timestamp())");
             
+            // Get activity of each admin
+            $id = $_SESSION['account_id'];
+            $queryUpdate = $conn->query("INSERT INTO `admin_log` (`admin_id`, `activities`, `activity_time`)
+             VALUES ('$id', 'Added a new advert', current_timestamp())");
+            
             if($queryInsert){
               echo"
               <script>alert('Form Submitted Successfully')</script>

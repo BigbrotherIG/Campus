@@ -6,6 +6,7 @@
     $accommodation = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 ?>
+    <title>Campus guide - Accommodation</title>
     <!-- Accomodation showcase -->
     <section class="my-4 mt-5" >
         <div class="container py-3" style="margin-top:100px">

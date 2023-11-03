@@ -53,22 +53,20 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
-    <?php if(isset($_SESSION['sweetalertText'])){
-
-       $data = $_SESSION['sweetalertText'];
-        
+        <?php if(isset($_SESSION['sweetalertText'])){
+            $data = $_SESSION['sweetalertText'];
         ?>
-        $(document).ready(function(){
-            swal({
-                title: "<?=$data['title']?>",
-                text: "<?=$data['text']?>",
-                icon: "<?=$data['icon']?>",
-                button: "<?=$data['button']?>",
-            })
+            $(document).ready(function(){
+                swal({
+                    title: "<?=$data['title']?>",
+                    text: "<?=$data['text']?>",
+                    icon: "<?=$data['icon']?>",
+                    button: "<?=$data['button']?>",
+                })
 
-        });
+            });
 
-        <?php unset($_SESSION['sweetalertText']);  } ?>
+        <?php unset($_SESSION['sweetalertText']);} ?>
 
     </script>
 </body>

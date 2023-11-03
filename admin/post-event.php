@@ -3,15 +3,15 @@
     $error_message = "";
     if(isset($_POST['post-event'])){
 
-        $imgFormat = ['jpg', 'jpeg', 'png', 'gif'];
+        $imgFormat = array('jpg', 'jpeg', 'png', 'gif');
         if(!empty($_FILES['event_img']['name'])){
 
             $file_name = $_FILES['event_img']['name'];
             $file_size = $_FILES['event_img']['size'];
             $file_tmp = $_FILES['event_img']['tmp_name'];
             
-            $target_dir = "../imgUpload/.$file_name";
-            $target_file_name = 'imgUpload/'.$file_name;
+            $target_dir = "../imgUpload/$file_name";
+            $target_file_name = "imgUpload/$file_name";
             // Get file format
             $file_format = explode('.', $file_name);
             $file_format = strtolower(end($file_format));
@@ -67,7 +67,7 @@
             }
         
         }else {
-            $error_message = "Event Image required";
+            $error_message = "Image 1 required";
         }
 
         $imgFormat = ['jpg', 'jpeg', 'png', 'gif'];
@@ -88,12 +88,12 @@
             }
         
         }else {
-            $error_message = "Event Image required";
+            $error_message = "Image 2 required";
         }
 
         if(empty($error_message)) {
 
-            if(move_uploaded_file($file_tmp, $file_format)) {
+            if(move_uploaded_file($file_tmp, $target_dir)) {
 
                 $queryInsert = $conn->query("INSERT INTO `upcoming_events` (`event_img`, `event_url`, `event_price`, `event_detail`, `event_img_1`, `event_img_2`, `event_list`,`event_status`, `date` ) 
                 VALUES ('$target_file_name', '$eventTitle', '$eventPrice','$eventDetail', '$target_file_name_1', '$target_file_name_2', '$eventList', '$event_status', current_timestamp())");
@@ -118,7 +118,15 @@
 
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
+            <?php
+                $queryImages = $conn->query("SELECT * FROM `upcoming_events`");
+                while($row = mysqli_fetch_array($queryImages)) {
+                    $img = $row['event_img'];
+                
+            ?>
             <div class="card">
+                <img src="<?=$img?>" alt="..." width="300" height="300">
+                <?php }?>
             <div class="card-body">
                 <h4 class="card-title">Post Event</h4>
                 <p class="card-description"><?=$error_message?></p>
@@ -126,7 +134,7 @@
                 <form class="forms-sample" method="post" enctype="multipart/form-data">
 
                     <div class="form-group">
-                        <label>Event image</label>                      
+                        <label for="event_img">Event image</label>                      
                         <input type="file" name="event_img" class="form-control file-upload-info"  placeholder="Upload Image">
                     </div>
 
@@ -144,7 +152,7 @@
                         <label for="trends">Event Trends</label>
                         <select class="form-control" name="event_status" id="trends">
                             <option>upcoming</option>
-                            <option>more-event</option>
+                            <option>more_events</option>
                         </select>
                     </div>
 

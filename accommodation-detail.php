@@ -8,6 +8,8 @@
     $accommodation = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 ?>
+
+    <title>Campus guide - Accommodation Detail</title>
     <!-- Space b/w the header and body -->
     <div class="container" style="margin-top: 100px;"></div>
     

@@ -12,11 +12,7 @@
         $admin_username = $row['username'];
         $admin_email = $row['email'];
         $adminRole = $row['user_role'];
-        $activty = $row['activity'];
-        $login = $row['log_time'];
     }
-
-    // $account_id = $_SESSION['account_id'];
 
 
 ?>

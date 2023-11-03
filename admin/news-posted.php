@@ -3,25 +3,25 @@
       if(isset($_GET['delete'])){
         $postId = $_GET['post_id'];
         
-        if(empty($queryDelete)) {
+        // if(empty($queryDelete)) {
 
-          $_SESSION['sweetalertText'] = array("title" => "Confirm! Do want to delete" , "text" => "", "icon" => "warning", "button" => "Confirm!");
+        //   $_SESSION['sweetalertText'] = array("title" => "Confirm! Do want to delete" , "text" => "", "icon" => "warning", "button" => "Confirm!");
 
-          $id = $_SESSION['account_id'];
-          $queryUpdate = $conn->query("INSERT INTO `admin_log` (`admin_id`, `activities`, `activity_time`)
-           VALUES ('$id', 'Deleted a post', current_timestamp())");
-            // $queryDelete = $conn->query("DELETE FROM `post_data` WHERE post_id = '$postId'");
-            // echo "
-            //   <script>alert('Delete Successful'); window.location.href='news-posted.php'</script>
-            // ";
-          }else {
-            echo "Not deleted";
-          }
+        //   $id = $_SESSION['account_id'];
+        //   $queryUpdate = $conn->query("INSERT INTO `admin_log` (`admin_id`, `activities`, `activity_time`)
+        //    VALUES ('$id', 'Deleted a post', current_timestamp())");
+        //     $queryDelete = $conn->query("DELETE FROM `post_data` WHERE post_id = '$postId'");
+        //     echo "
+        //       <script>alert('Delete Successful'); window.location.href='news-posted.php'</script>
+        //     ";
+        //   }else {
+        //     echo "Not deleted";
+        // }
           
       }
       
-      $limit = 20;
-      
+      $limit = 10;
+
       if(isset($_GET['page'])) {
           $page = $_GET['page'];
       }else {
@@ -31,8 +31,9 @@
       $start = $limit * ($page - 1);
       $prev = $page - 1;
       $next = $page + 1;
-      
-      $queryPages = $conn->query("SELECT * FROM `post_data` where trends = 'trends' LIMIT $limit OFFSET $start");
+
+      // $postId = $_GET['post_id'];
+      $queryPages = $conn->query("SELECT * FROM `post_data`  LIMIT $limit OFFSET $start");
       $queryCount = $conn->query("SELECT * FROM `post_data`");
       $countAll = $queryCount->num_rows;
 
@@ -46,7 +47,7 @@
                 <div class="card-body">
                   <h4 class="card-title">News posted</h4>
                   <h4 class="card-title"><?=$countAll?></h4>
-                    <div class="table-responsive pt-3">
+                  <div class="table-responsive pt-3">
                       
                     <table class="table table-hover table-bordered rounded">
                       <thead>
@@ -66,8 +67,6 @@
                             $queryInsert = $conn->query("SELECT * FROM `post_data`");
                             
                             while($postData = mysqli_fetch_array($queryInsert)){
-                                
-                    
                             
                         ?>
                         <tr>

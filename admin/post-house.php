@@ -118,6 +118,12 @@
             
                 $queryInsert = $conn->query("INSERT INTO `accommodation_data` (`accommodation_image`, `accommodation_url`, `accommodation_price`, `accommodation_det`, `accommodation_img_1`, `accommodation_img_2`, `accommodation_img_3`, `accommodation_amenities`, `date`)
                 VALUES ('$target_file_name', '$accommodation_title', '$accommodation_price', '$accommodation_detail', '$target_file_name_1', '$target_file_name_2', '$target_file_name_third', '$accommodation_amenities', current_timestamp())");
+
+                // Get activity of each admin
+                $id = $_SESSION['account_id'];
+                $queryUpdate = $conn->query("INSERT INTO `admin_log` (`admin_id`, `activities`, `activity_time`)
+                VALUES ('$id', 'Posted a new house', current_timestamp())");
+
                 if($queryInsert){
                 echo"
                     <script>alert('Form Submitted Successfully')</script>
@@ -132,7 +138,6 @@
        
 
     }
-
 
 ?>
 

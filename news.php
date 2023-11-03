@@ -1,12 +1,34 @@
-<?php include 'header.php'; ?>
+<?php include 'header.php'; 
+?>
+<title>Campus guide - news</title>
+
 <?php
     if(isset($_GET['post_id'])){
          $new = $_GET['post_id'];
     }
 
+    $limit = 5;
+
+    if(isset($_GET['page'])) {
+        $page = $_GET['page'];
+    }else {
+        $page = 1;
+    }
+
+    $start = $limit * ($page - 1);
+    $prev = $page - 1;
+    $next = $page + 1;
+
     $my_news = "SELECT * FROM `post_data` WHERE `post_id` = $new";
     $eachnews = mysqli_query($conn, $my_news);
     $get_news = mysqli_fetch_all($eachnews, MYSQLI_ASSOC);
+
+    // Change the id from comment_id to post_id
+    $queryInsert = $conn->query("SELECT * FROM `post_comments` WHERE `post_id` = $new LIMIT $limit OFFSET $start");
+    $queryAll = $conn->query("SELECT * FROM `post_comments` WHERE `post_id` = $new");
+    $countAll = $queryAll->num_rows;
+   
+    $pages = ceil($countAll/$limit);
 
 
     $name = $comments = '';
@@ -28,8 +50,7 @@
         }
 
 
-        if(!empty($nameErr) && !empty($bodyErr)) {
-            // Echo error
+        if(!empty($nameErr) || !empty($bodyErr)) {
             echo "Error";
         } else {
                       
@@ -48,7 +69,7 @@
     }
     
 ?>
-
+      
     <div class="container" style="margin-top: 100px;"></div>
 
     <!--  -->
@@ -64,13 +85,23 @@
                     <p class="container">
                         <small>Posted by:</small>
                         <small class="text-danger"><?php echo $newsId['news_author']; ?></small>
-                        <small>| Comment</small><br>
+                        <!-- PHP -->
+                        <?php 
+                              $postId = $_GET['post_id'];
+                              $query = $conn->query("SELECT * FROM `post_comments` WHERE `post_id` = $postId");
+                              $count = $query->num_rows;
+                        ?>
+                        <?php if(empty($count)){?>
+                            <small>| No Comments</small><br>
+                        <?php } else {?>
+                                <small>| Comment: <?=$count?></small><br>
+                        <?php }?>
                         <small>Date: <?= $newsId['news_date']?></small>
                     </p>
                     <!-- News details -->
 
                     <div class="container">
-                        <div class="container"><?=$newsId['news_detail']?></div>
+                        <p class=" lead fs-6 fw-normal text-dark"><?=$newsId['news_detail']?></p>
                     </div>
                     <!-- <p class="container lead fs-6 fw-normal text-dark">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum earum est natus dolorem alias nulla maiores, praesentium quasi accusamus dolorum.</p>
                     <div class="container d-flex flex-column mb-4">
@@ -82,9 +113,43 @@
                     </div> -->
 
                     <!-- See comments -->
-                    <div class="container comment-section my-3" style="background-color: var(--lg-grey);">
-                        <p class="mx-3 my-0 text-primary"><?= $name;?></p>
-                        <p class="mx-3 my-2 text-primary"><?= $comments;?></p>
+                    <div class="comment-section my-3" style="background-color: var(--lg-grey);">
+                        <?php 
+                            // I commented these lines of codes b/c I declared them above at line 87-88.
+                            // $postId = $_GET['post_id'];
+                            // $query = $conn->query("SELECT * FROM `post_comments` WHERE `post_id` = $postId
+                            // ");              
+                            while($row = mysqli_fetch_array($query)) {
+
+                        ?>                
+                        <div class="col col-12 px-lg-5">
+                            <div class="card my-3 w-100">
+                                <div class="card-body">
+                                    <!-- <h5 class="card-title">Description</h5> -->
+                                    <small class="fs-5"><?= $row['name'];?></small><br>
+                                    <p class="card-text my-2 container"><?php echo $row['comment']; ?></p>
+                                    <a href="event-details.php?events_id=<?php echo $event['events_id']; ?>" class="btn btn-sm btn-danger">Preview</a>
+                                    <a href="#" class="btn btn-sm btn-primary">Set schedule</a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php }?>
+
+                        <div class="container mx-auto d-flex">
+                            <a href="news.php?page=<?=$prev?>" class="btn btn-outline-danger <?php if($page <= 1){?>diasbled<?php }?> me-1">Prev</a>
+    
+                            <?php 
+                                if($pages <= 5) {
+                                    for($counter = 1; $counter <= $pages; $counter++) {
+                                        if($counter === $pages) {                            
+                            ?>
+                                <a href="news.php" class="btn btn-outline-secondary me-1"><?=$counter ?></a>
+                            <?php } else {?>
+                                <a href="news.php?page=<?=$counter?>" class="btn btn-outline-secondary me-1"><?=$counter ?></a>                    
+                            <?php } } }?>
+                                <a href="news.php?page=<?=$next?>" class="btn btn-outline-primary <?php if($page >= $pages) {?>diasbled <?php }?> me-1">Next</a>                    
+
+                        </div>
                     </div>
 
                     <!-- Comments -->
@@ -111,6 +176,7 @@
                         </form>
                     </div>
 
+                    <!-- Subcribe -->
                     <div class="container my-4">
                         <div class="bg-info text-white">
                             <p class="lead fw-normal text-center">Be the first to know</p> 

@@ -16,7 +16,8 @@
     $events = mysqli_fetch_all($result_4, MYSQLI_ASSOC);
     $get_faq = mysqli_fetch_all($faq_result, MYSQLI_ASSOC);
 ?>
-
+    
+    <title>Campus guide - Home</title>
   <!-- Carousel -->
     <div class="carousel slide mt-5" id="myCarousel" data-bs-ride="carousel">
             
@@ -238,7 +239,7 @@
                 </div>
             
             </div>
-            <p class="lead text-danger my-2 p-3">Didn't see what you looking for? click <a href="past-questions.php" class="text-primary">Here</a></p>
+            <p class="lead text-danger my-2 p-3">Didn't see what you looking for? click <a href="#" class="text-primary">Here</a></p>
         </div>
     </section>
     <!-- Past questions -->
@@ -318,8 +319,8 @@
                 </div>
             </div>
             <div class="d-flex py-2 justify-content-start">
-                <a href="ask-a-question.php" class="btn btn-outline-danger me-2" type="button">All Questions</a>
-                <a href="ask-a-question.php" class="btn btn-outline-warning" type="button">Ask a question</a>
+                <a href="" class="btn btn-outline-danger me-2" type="button">All Questions</a>
+                <a href="" class="btn btn-outline-warning" type="button">Ask a question</a>
             </div>
         </div>
     </section>

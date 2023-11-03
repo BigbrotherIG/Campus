@@ -3,23 +3,24 @@
 
 $message="";
 if(isset($_POST['submit'])) {
-        $imgFormat = ['jpg', 'jpeg', 'png', 'gif'];
+    
+        $imgFormat = array('jpg', 'jpeg', 'png', 'gif');
         if(!empty($_FILES['imgUpload']['name'])){
             print_r($_FILES);
             $file_name = $_FILES['imgUpload']['name'];
             $file_size = $_FILES['imgUpload']['size'];
             $file_tmp = $_FILES['imgUpload']['tmp_name'];
             
-            $target_dir = "imgUpload/ .$file_name";
+            $target_dir = "imgUpload/$file_name";
             // Get file format
             $file_format = explode('.', $file_name);
             $file_format = strtolower(end($file_format));
 
 
             if(in_array($file_format, $imgFormat)) {
-                if($file_size <= 90000000000) {
+                if($file_size <= 90000000) {
                     if(move_uploaded_file($file_tmp, $target_dir)){
-                        $query =$conn->query("INSERT INTO `pictures` (`picture`) VALUES  ('$target_dir')");
+                        $query = $conn->query("INSERT INTO `pictures` (`picture`) VALUES  ('$target_dir')");
                         $message = '<p>File Uploaded</p>';
                     }else{
                         $message = '<p>Not File type</p>';
@@ -35,7 +36,6 @@ if(isset($_POST['submit'])) {
             $message = "Error";
         }
     }
-    // echo json_encode($imgFormat);
 
 ?>
 
@@ -68,7 +68,7 @@ if(isset($_POST['submit'])) {
 
     <?php
         $query = $conn->query("SELECT * FROM `pictures`");
-        while($pic = mysqli_fetch_array($query)) {;
+        while($pic = mysqli_fetch_array($query)) {
     ?>
 
     <img src="<?=$pic['picture']?>" alt="" width="100px">
