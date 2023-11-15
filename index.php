@@ -18,7 +18,7 @@
 ?>
     
     <title>Campus guide - Home</title>
-  <!-- Carousel -->
+    <!-- Carousel -->
     <div class="carousel slide mt-5" id="myCarousel" data-bs-ride="carousel">
             
             <!-- Indicators/dots -->
@@ -348,5 +348,6 @@
         </div>
     </section>
     <!-- Upcoming Events -->
+
 
 <?php include "footer.php";?>

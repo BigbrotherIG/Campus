@@ -33,9 +33,17 @@
                         <div class="carousel-item active">
                             <img src="<?=$eventDetail['event_img_1']?>" alt="" class="img-responsive w-100" height="450">
                         </div>
+                        <?php 
+
+                            $queryImage = $conn->query("SELECT * FROM `event_image` WHERE 'events_id' = $eventId");
+                            while($row = mysqli_fetch_array($queryImage)){
+                                $wv = $row['event_img_2'];
+                        
+                        ?>
                         <div class="carousel-item">
-                            <img src="<?=$eventDetail['event_img_2']?>" alt="" class="img-responsive w-100" height="450">
+                            <img src="<?=$wv?>" alt="" class="img-responsive w-100" height="450">
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

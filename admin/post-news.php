@@ -3,6 +3,8 @@
     $error_message = "";
     if(isset($_POST['post'])){
 
+        $editor = $_REQUEST['editor'];
+        
         $post_url = $_POST['post_url'];
         if(empty($post_url)){
             $error_message = "Post url must not be empty";
@@ -107,7 +109,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="Textarea1">News Details</label>
+                        <label for="textarea">News Details</label>
                         <textarea class="form-control" name="textarea" id="editor" rows="6"></textarea>
                     </div>
                     

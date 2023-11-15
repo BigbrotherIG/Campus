@@ -45,7 +45,7 @@
     ClassicEditor
         .create( document.querySelector( '#editor' ), {
           ckfinder: {
-            uploadFile: '../file.php'
+            uploadUrl: '../file.php'
           }
         } )
         .then(editor => {
@@ -55,18 +55,18 @@
             console.log( error );
         } );
 
-    ClassicEditor
-        .create( document.querySelector( '#editor2' ), {
-          ckfinder: {
-            uploadFile: '../file.php'
-          }
-        } )
-        .then(editor => {
-          console.log(editor);
-        })
-        .catch( error => {
-            console.log( error );
-        } );
+    // ClassicEditor
+    //     .create( document.querySelector( '#editor2' ), {
+    //       ckfinder: {
+    //         uploadUrl: '../file.php'
+    //       }
+    //     } )
+    //     .then(editor => {
+    //       console.log(editor);
+    //     })
+    //     .catch( error => {
+    //         console.log( error );
+    //     } );
   </script>
 
   <!-- Sweet Alert -->

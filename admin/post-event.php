@@ -1,5 +1,9 @@
 <?php include_once('header.php');
 
+    if(isset($_REQUEST['event_image_id'])) {
+        $event_image_id = $_REQUEST['event_image_id'];
+    }
+
     $error_message = "";
     if(isset($_POST['post-event'])){
 
@@ -95,9 +99,15 @@
 
             if(move_uploaded_file($file_tmp, $target_dir)) {
 
-                $queryInsert = $conn->query("INSERT INTO `upcoming_events` (`event_img`, `event_url`, `event_price`, `event_detail`, `event_img_1`, `event_img_2`, `event_list`,`event_status`, `date` ) 
-                VALUES ('$target_file_name', '$eventTitle', '$eventPrice','$eventDetail', '$target_file_name_1', '$target_file_name_2', '$eventList', '$event_status', current_timestamp())");
+                $queryInsert = $conn->query("INSERT INTO `upcoming_events` (`event_img`, `event_url`, `event_price`, `event_detail`, `event_list`,`event_status`, `date` ) 
+                VALUES ('$target_file_name', '$eventTitle', '$eventPrice','$eventDetail', '$eventList', '$event_status', current_timestamp())");
                 
+                // if(move_uploaded_file($file_tmp, $target_dir)) {
+                    $event_image_id = $_GET['event_image_id'];
+                    $queryImage = $conn->query("INSERT INTO `event_image` ( `event_id`, `event_img_1`, `event_img_2`) 
+                    VALUES ('$event_image_id', '$target_file_name_1', '$target_file_name_2');");
+                // }
+
                 if($queryInsert){
                 echo"
                 <script>alert('Form Submitted Successfully')</script>
@@ -109,24 +119,25 @@
                 }
             }
 
-          }
-       
 
+          }
     }
+
+    
 
 ?>
 
     <div class="row">
         <div class="col-12 grid-margin stretch-card">
             <?php
-                $queryImages = $conn->query("SELECT * FROM `upcoming_events`");
-                while($row = mysqli_fetch_array($queryImages)) {
-                    $img = $row['event_img'];
+                // $queryImages = $conn->query("SELECT * FROM `upcoming_events`");
+                // while($row = mysqli_fetch_array($queryImages)) {
+                //     $img = $row['event_img'];
                 
             ?>
             <div class="card">
                 <img src="<?=$img?>" alt="..." width="300" height="300">
-                <?php }?>
+                <?php //}?>
             <div class="card-body">
                 <h4 class="card-title">Post Event</h4>
                 <p class="card-description"><?=$error_message?></p>

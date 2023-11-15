@@ -1,5 +1,5 @@
 <?php 
-@include 'includes/dbconnect.php';
+@include 'dbconnect.php';
     $data = [];
     if(isset($_FILES['uploads']['name'])) {
         print_r($_FILES);

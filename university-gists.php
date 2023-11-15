@@ -38,7 +38,7 @@
                                 <a href="news.php?post_id=<?= $uniGists['post_id']; ?>" class="lead fs-4 fw-normal text-primary"><?= $uniGists['post_url']?></a>
                                 <p></p>
                                 <div class=" d-flex flex-column mb-3">
-                                    <img src="<?=$uniGists['news_img']?>" class="img-responsive mx-auto" width="70%" height="300" alt="news-image">
+                                    <img src="<?=$uniGists['news_img']?>" class="img-responsive mx-auto" width="70%" height="300" alt="<?=$uniGists['news_img']?>news-image">
                                     <div class="ms-md-3 mt-2 mb-2">
                                         <small>
                                             <p><?=substr($uniGists['news_detail'], 0, 255)?>

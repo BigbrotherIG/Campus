@@ -17,7 +17,7 @@ if(isset($_POST['submit'])) {
             $file_format = strtolower(end($file_format));
 
 
-            if(in_array($file_format, $imgFormat)) {
+            if(in_array($file_format, $imgFormat, $editor)) {
                 if($file_size <= 90000000) {
                     if(move_uploaded_file($file_tmp, $target_dir)){
                         $query = $conn->query("INSERT INTO `pictures` (`picture`) VALUES  ('$target_dir')");
